@@ -5,6 +5,9 @@ import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import {me} from './store'
 
+import AllProducts from './components/AllProducts'
+import SingleProduct from './components/SingleProduct';
+
 /**
  * COMPONENT
  */
@@ -18,18 +21,27 @@ class Routes extends Component {
 
     return (
       <div>
-        {isLoggedIn ? (
+        <div>
+          {isLoggedIn ? (
+            <Switch>
+              <Route path="/home" component={Home} />
+              <Redirect to="/home" />
+            </Switch>
+          ) : (
+            <Switch>
+              <Route path='/' exact component={ Login } />
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
+            </Switch>
+          )}
+        </div>
+
+        <div>
           <Switch>
-            <Route path="/home" component={Home} />
-            <Redirect to="/home" />
+            <Route exact path = '/products' component={AllProducts}/>
+            <Route path = '/products/:productId' component={SingleProduct} />
           </Switch>
-        ) : (
-          <Switch>
-            <Route path='/' exact component={ Login } />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-          </Switch>
-        )}
+        </div>
       </div>
     )
   }
