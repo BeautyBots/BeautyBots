@@ -1,20 +1,27 @@
 import React from 'react'
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getProducts } from '../store/products';
+import { getFilteredProducts, getProducts } from '../store/products';
 
 class AllProducts extends React.Component {
   constructor(props) {
     super(props)
+
+    this.handleSelect = this.handleSelect.bind(this)
   }
 
   componentDidMount() {
     this.props.loadProducts()
   }
 
+  handleSelect(event) {
+    event.target.value === "all-products"
+    ? this.props.loadProducts()
+    : this.props.filterProducts(event.target.value)
+  }
+
   render() {
     const {products} = this.props
-
     return (
       <div>
         <div className="product-filter">
@@ -22,7 +29,7 @@ class AllProducts extends React.Component {
           <label className="filter">Filter: </label>
               <select onChange = {this.handleSelect}>
                 <option value="all-products" >All Products</option>
-                <option value="toner">Toner</option>
+                <option value="Toner">Toner</option>
               </select>
         </div>
 
@@ -51,7 +58,8 @@ const mapState = ({products}) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    loadProducts: () => dispatch(getProducts())
+    loadProducts: () => dispatch(getProducts()),
+    filterProducts: (category) => dispatch(getFilteredProducts(category))
   }
 }
 
