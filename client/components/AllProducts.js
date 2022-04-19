@@ -1,0 +1,66 @@
+import React from 'react'
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { getFilteredProducts, getProducts } from '../store/products';
+
+class AllProducts extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.handleSelect = this.handleSelect.bind(this)
+  }
+
+  componentDidMount() {
+    this.props.loadProducts()
+  }
+
+  handleSelect(event) {
+    event.target.value === "all-products"
+    ? this.props.loadProducts()
+    : this.props.filterProducts(event.target.value)
+  }
+
+  render() {
+    const {products} = this.props
+    return (
+      <div>
+        <div className="product-filter">
+          <h2>All Products</h2>
+          <label className="filter">Filter: </label>
+              <select onChange = {this.handleSelect}>
+                <option value="all-products" >All Products</option>
+                <option value="Toner">Toner</option>
+              </select>
+        </div>
+
+        <div id="products">
+          {products.map((product) => (
+            <div key={product.id} id={product.id} className="product-link">
+              <Link to={`/products/${product.id}`}>
+                <img src={product.imageUrl} />
+                <p>{product.title}</p>
+                <p>{product.price}</p>
+              </Link>
+
+            </div>
+          ))}
+        </div>
+      </div>
+    )
+  }
+}
+
+const mapState = ({products}) => {
+  return {
+    products
+  }
+}
+
+const mapDispatch = (dispatch) => {
+  return {
+    loadProducts: () => dispatch(getProducts()),
+    filterProducts: (category) => dispatch(getFilteredProducts(category))
+  }
+}
+
+export default connect(mapState, mapDispatch)(AllProducts)
