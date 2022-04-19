@@ -34,7 +34,7 @@ async function seed() {
 				'Contains antioxidants and hydrating ceramides, making oily areas less noticeable and skin more even. This toner is specially formulated for use with oily skin, combination skin, enlarged pores, blemish-prone skin to balance, refine, and protect your skin.',
 			quantity: 20,
 			category: 'Toner',
-			imageUrl: 'https://www.dropbox.com/s/3v3py4phs9jguqn/BeautyBots.png?dl=0',
+			imageUrl: '/productImages/paulas_choice_toner.png',
 		},
 		{
 			title: 'Murad Environmental Shield Essential-C Cleanser',
@@ -43,7 +43,7 @@ async function seed() {
 				'A gentle daily cleanser for pigmented, sun damaged and environmentally aged skin.',
 			quantity: 20,
 			category: 'Cleanser',
-			imageUrl: 'https://www.dropbox.com/s/0sgojqowkwwl71h/Murad.png?dl=0',
+			imageUrl: '/productImages/murad_cleanser.png',
 		},
 		{
 			title: 'New York Biology Dead Sea Mud Mask',
@@ -52,7 +52,7 @@ async function seed() {
 				'PURE DEAD SEA MUD helps cleanse the skin and provide a soothing sensation. Rich in minerals, it aids skin renewal, creating a gentle exfoliation effect that removes excess oil, toxins, and dead skin cells for a softer feel and radiant glow.',
 			quantity: 20,
 			category: 'Mask',
-			imageUrl: 'https://www.dropbox.com/s/p77nfk2e01bxeq0/Dead%20Sea.png?dl=0',
+			imageUrl: '/productImages/sea_mud_mask.png',
 		},
 		{
 			title: 'La Roche-Posay Effaclar Mat Oil-Free Mattifying Moisturizer',
@@ -61,8 +61,7 @@ async function seed() {
 				'Use as a daily, oil-free mattifying moisturizer for oily skin after cleansing. It is an excellent base for makeup.',
 			quantity: 20,
 			category: 'Moisturizer',
-			imageUrl:
-				'https://www.dropbox.com/s/petfyfpk9bb3xgw/LaRochePosay.png?dl=0',
+			imageUrl: '/productImages/laroche-posay_moisturizer.png',
 		},
 		{
 			title: 'SHVYOG Vitamin C Clay Face Mask',
@@ -71,8 +70,7 @@ async function seed() {
 				'The main ingredients vitamin C and turmeric has stronger effects of removing dullness and anti-inflammatory. Vitamin C helps prevent pigmentation, which is effective in preventing sunburn, the clay face mask is mixed with organic turmeric, that helps to improve the dullness of the skin, so that your skin is still soft and radiant.',
 			quantity: 20,
 			category: 'Mask',
-			imageUrl:
-				'https://www.dropbox.com/s/5cr4fekfnrt0ulf/VitaminCMask.png?dl=0',
+			imageUrl: '/productImages/shvyog_face_mask.png',
 		},
 		{
 			title: 'PanOxyl Acne Foaming Wash',
@@ -81,7 +79,7 @@ async function seed() {
 				'Maximum strength, antimicrobial foaming wash kills acne-causing bacteria on contact and lifts dirt from pores for a fresher, clearer you.',
 			quantity: 20,
 			category: 'Cleanser',
-			imageUrl: 'https://www.dropbox.com/s/5j7fa8l4le11ccx/PanOxyl.png?dl=0',
+			imageUrl: '/productImages/panoxyl_foamwash.png',
 		},
 		{
 			title: 'Youth To The People Kale + Green Tea Superfood Face Cleanser',
@@ -90,7 +88,7 @@ async function seed() {
 				'Clean, 100% vegan formula. Proprietary cold-pressed plant extracts harnesses powerful antioxidants & phytonutrients from pure, effective ingredients.',
 			quantity: 20,
 			category: 'Cleanser',
-			imageUrl: 'https://www.dropbox.com/s/5j7fa8l4le11ccx/PanOxyl.png?dl=0',
+			imageUrl: '/productImages/youthtothepeople_face_cleanser.png',
 		},
 	];
 	await Promise.all(products.map((product) => Product.create(product)));

@@ -25,4 +25,11 @@ productRouter.get('/:id', async (req, res, next) => {
 	}
 });
 
+//ADMIN FEATURES
+//PUT /api/products
+
+//DELETE /api/products/:id
+
+//POST /api/products
+
 module.exports = productRouter;
