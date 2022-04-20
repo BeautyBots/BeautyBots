@@ -9,18 +9,18 @@ class SingleProduct extends React.Component {
   }
 
   componentDidMount() {
-    const productId = this.props.match.params.productId
-    this.props.loadProduct(productId)
+    const productId = this.props.match.params.productId;
+    this.props.loadProduct(productId);
   }
 
   render() {
-    const product = this.props.product
+    const product = this.props.product;
 
     return (
       <div className="product">
         <div className="product-row">
           <div className="product-img">
-            <img src = {product.imageUrl} />
+            <img src={product.imageUrl} />
           </div>
 
           <div className="product-info">
@@ -29,7 +29,6 @@ class SingleProduct extends React.Component {
 
             <p>Description: {product.description}</p>
             <p>Product Type: {product.category}</p>
-
           </div>
         </div>
       </div>
@@ -37,16 +36,16 @@ class SingleProduct extends React.Component {
   }
 }
 
-const mapState = ({product}) => {
+const mapState = ({ product }) => {
   return {
-    product
-  }
-}
+    product,
+  };
+};
 
 const mapDispatch = (dispatch) => {
   return {
-    loadProduct: (productId) => dispatch(getOneProduct(productId))
-  }
-}
+    loadProduct: (productId) => dispatch(getOneProduct(productId)),
+  };
+};
 
-export default connect(mapState, mapDispatch)(SingleProduct)
+export default connect(mapState, mapDispatch)(SingleProduct);
