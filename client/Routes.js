@@ -7,7 +7,8 @@ import { me } from "./store";
 
 import AllProducts from "./components/AllProducts";
 import SingleProduct from "./components/SingleProduct";
-import AddProductForm from "./components/Admin/AddProductForm";
+import AddProductForm from "./components/AddProductForm";
+import EditProductForm from "./components/EditProductForm";
 
 /**
  * COMPONENT
@@ -53,6 +54,7 @@ class Routes extends Component {
           {/* <Switch>
             <Route exact path="/products" component={AllProducts} />
             <Route exact path="/products/addForm" component={AddProductForm} />
+            <Route exact path="/products/:productId/editForm" component={EditProductForm} />
             <Route path="/products/:productId" component={SingleProduct} />
           </Switch> */}
         </div>
