@@ -31,22 +31,6 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
-router.post('/', async (req, res, next) => {
-  try {
-    const [user, wasCreated] = await User.findOrCreate({
-      where: {
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-      }
-    })
-    res.send(user);
-
-  } catch (err) {
-    next(err)
-  }
-})
-
 //Admin Privledge to add other admins
 router.post('/admin', async (req, res, next) => {
   try {
