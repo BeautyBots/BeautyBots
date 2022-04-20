@@ -33,7 +33,8 @@ class Routes extends Component {
                 path="/products/addForm"
                 component={AddProductForm}
               />
-              <Route path="/products/:productId" component={SingleProduct} />
+              <Route exact path="/products/:productId" component={SingleProduct} />
+              <Route exact path="/products/:productId/editForm" component={EditProductForm} />
             </Switch>
           ) : isLoggedIn ? (
             <Switch>
