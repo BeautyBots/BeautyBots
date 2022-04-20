@@ -1,6 +1,6 @@
 const productRouter = require('express').Router();
 const {
-	models: { Product },
+	models: { Product, Review },
 } = require('../db');
 
 //****NOTE TO TEAMMATES: do we need to include any other models when we fetch product data? ie. const products = await Campus.findAll({include: Review})
@@ -20,7 +20,12 @@ productRouter.get('/', async (req, res, next) => {
 //GET /api/products/:id
 productRouter.get('/:id', async (req, res, next) => {
 	try {
-		const product = await Product.findByPk(req.params.id);
+		const product = await Product.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [Review]
+    });
 		res.send(product);
 	} catch (err) {
 		console.log('err: ', err);
