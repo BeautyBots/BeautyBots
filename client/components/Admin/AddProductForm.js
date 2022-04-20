@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { addProduct } from "../store/products";
+import { addProduct } from "../../store/products";
 
 class AddProductForm extends React.Component {
   constructor(props) {
