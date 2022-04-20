@@ -18,6 +18,11 @@ class SingleProduct extends React.Component {
 
     return (
       <div className="product">
+
+      <Link to={`/products/${product.id}/editForm`}>
+          <button>Edit Product</button>
+      </Link>
+
         <div className="product-row">
           <div className="product-img">
             <img src={product.imageUrl} />
@@ -25,7 +30,7 @@ class SingleProduct extends React.Component {
 
           <div className="product-info">
             <h2>{product.title}</h2>
-            <p>{product.price}</p>
+            <p>Price: {product.price}</p>
 
             <p>Description: {product.description}</p>
             <p>Product Type: {product.category}</p>
