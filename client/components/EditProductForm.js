@@ -1,22 +1,38 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { addProduct } from "../store/products";
+import {updateProduct} from "../store/singleProduct"
+import {deleteProduct} from "../store/products"
 
-class AddProductForm extends React.Component {
+class EditProductForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      price: "",
-      description: "",
-      quantity: "",
-      category: "",
-      imageUrl: "",
+      title: props.product.title || "",
+      price: props.product.price || "",
+      description: props.product.description || "",
+      quantity: props.product.quantity || "",
+      category: props.product.category || "",
+      imageUrl: props.product.imageUrl || "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  // componentDidUpdate(prevProps) {
+  //   console.log("RUNNING")
+  //   if (prevProps !== this.props) {
+  //     this.setState({
+  //       title: this.props.product.title || "",
+  //       address: this.props.product.price || "",
+  //       description: this.props.product.description || "",
+  //       quantity: this.props.product.quantity || "",
+  //       category: this.props.product.category || "",
+  //       imageUrl: this.props.product.imageUrl || "",
+  //     });
+  //   }
+  // }
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
@@ -31,7 +47,7 @@ class AddProductForm extends React.Component {
         passToDispatch[key] = this.state[key];
       }
     }
-    this.props.addProduct(passToDispatch);
+    this.props.updateProduct({...this.props.product, ...passToDispatch});
     this.setState({
       title: "",
       price: "",
@@ -55,6 +71,7 @@ class AddProductForm extends React.Component {
       "Treatments",
     ];
     return (
+      <div id="edit-product-form">
       <form id="add-product-form" onSubmit={this.handleSubmit}>
         <label htmlFor="title">Product Name:</label>
         <input name="title" onChange={this.handleChange} value={title} />
@@ -74,7 +91,6 @@ class AddProductForm extends React.Component {
 
         <label className="category">Category: </label>
         <select name="category" onChange={this.handleChange} value={category}>
-          <option>Select Category</option>
           {categories.map((category) => (
             <option value={category}>{category}</option>
           ))}
@@ -85,12 +101,22 @@ class AddProductForm extends React.Component {
 
         <button type="submit">Submit</button>
       </form>
+
+      <button onClick = {()=>{this.props.deleteProduct(this.props.product.id)}}>Delete Product</button>
+    </div>
     );
   }
 }
 
-const mapDispatch = (dispatch) => ({
-  addProduct: (product) => dispatch(addProduct(product)),
+const mapState = ({ product }) => {
+  return {
+    product,
+  };
+};
+
+const mapDispatch = (dispatch, {history}) => ({
+  updateProduct: (product) => dispatch(updateProduct(product)),
+  deleteProduct: (product) => dispatch(deleteProduct(product, history))
 });
 
-export default connect(null, mapDispatch)(AddProductForm);
+export default connect(mapState, mapDispatch)(EditProductForm);
