@@ -16,14 +16,21 @@ async function seed() {
 	console.log('db synced!');
 
 	// Creating Users
-	const users = await Promise.all([
-		User.create({ username: 'cody', email: 'cody@gmail.com', password: '123' }),
-		User.create({
+	const users = [
+		{ username: 'cody', email: 'cody@gmail.com', password: '123' },
+		{
 			username: 'murphy',
 			email: 'murphy@gmail.com',
 			password: '123',
-		}),
-	]);
+		},
+		{
+			username: 'beautybot',
+			email: 'beautybot@gmail.com',
+			password: '123',
+			userType: 'Admin',
+		},
+	];
+	await Promise.all(users.map((user) => User.create(user)));
 
 	// //Create Products
 	const products = [
@@ -98,7 +105,11 @@ async function seed() {
 		let reviews = [];
 		for (let i = 0; i < 20; i++) {
 			reviews.push({
-				body: `I love ${faker.commerce.product()}! I would 100% recommend this item to other customers.`,
+				body: `I love the ${faker.commerce.product()}! I would ${Math.ceil(
+					100 * Math.random()
+				)}% recommend this item to other customers.`,
+				productId: Math.ceil(7 * Math.random()),
+				userId: Math.ceil(2 * Math.random()),
 			});
 		}
 		return reviews;
@@ -108,21 +119,22 @@ async function seed() {
 	//Create Orders
 	function ordersDB() {
 		let orders = [];
-		for (let i = 0; i < 5; i++) {
+		for (let i = 0; i < 7; i++) {
 			orders.push({
-				total: Math.random() * 30,
 				products: [
 					{
-						productID: i,
+						productId: Math.ceil(7 * Math.random()),
 						price: Math.ceil(5 * Math.random()),
 						quantity: Math.ceil(3 * Math.random()),
 					},
 					{
-						productID: i + 4,
-						price: Math.ceil(10 * Math.random()),
+						productId: Math.ceil((7 - i) * Math.random()),
+						price: Math.ceil(35 * Math.random()),
 						quantity: Math.ceil(10 * Math.random()),
 					},
 				],
+				total: Math.random() * 100,
+				userId: Math.ceil(2 * Math.random()),
 			});
 		}
 		return orders;
