@@ -24,6 +24,7 @@ class AddProductForm extends React.Component {
   }
 
   handleSubmit(event) {
+    //change this to use a reduce method for a more elegant solution
     event.preventDefault();
     let passToDispatch = {};
     for (let key in this.state) {
