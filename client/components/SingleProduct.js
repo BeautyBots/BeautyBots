@@ -24,13 +24,30 @@ class SingleProduct extends React.Component {
 		if (localStorage.getItem('products')) {
 			products = JSON.parse(localStorage.getItem('products'));
 		}
-		products.push({
-			id,
-			title,
-			price,
-			imageUrl,
-			quantity: this.state.quantity,
-		});
+		//check if product already exist in cart
+		const isFound = products.some((product) => product.id === id);
+		if (isFound) {
+			//if exist, update product's quantity
+			products = products.map((product) => {
+				if (product.id !== id) {
+					return product;
+				} else {
+					return {
+						...product,
+						quantity: Number(product.quantity) + Number(this.state.quantity),
+					};
+				}
+			});
+		} else {
+			//if doesn't exist, push product to cart
+			products.push({
+				id,
+				title,
+				price,
+				imageUrl,
+				quantity: this.state.quantity,
+			});
+		}
 		localStorage.setItem('products', JSON.stringify(products));
 		this.setState({ quantity: 1 });
 	}
