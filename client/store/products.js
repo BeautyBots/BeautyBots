@@ -3,7 +3,7 @@ import axios from "axios";
 const GET_PRODUCTS = "GET_PRODUCTS";
 const FILTER_PRODUCTS = "FILTER_PRODUCTS";
 const ADD_PRODUCT = "ADD_PRODUCT";
-const DELETE_PRODUCT = "DELETE_PRODUCT"
+const DELETE_PRODUCT = "DELETE_PRODUCT";
 
 const _getProducts = (products) => {
   return {
@@ -19,7 +19,6 @@ const _filterProducts = (products) => {
   };
 };
 
-
 const _addProduct = (newProduct) => {
   return {
     type: ADD_PRODUCT,
@@ -30,10 +29,9 @@ const _addProduct = (newProduct) => {
 const _deleteProduct = (productToDelete) => {
   return {
     type: DELETE_PRODUCT,
-    productToDelete
-  }
-}
-
+    productToDelete,
+  };
+};
 
 export const getProducts = () => {
   return async (dispatch) => {
@@ -71,18 +69,19 @@ export const addProduct = (newProduct) => {
   };
 };
 
-export const deleteProduct  = (productId, history) => {
+export const deleteProduct = (productId, history) => {
   return async (dispatch) => {
     try {
-      const { data: productToDelete} = await axios.delete(`/api/products/${productId}`)
-      dispatch(_deleteProduct(productToDelete))
-      history.push('/products')
+      const { data: productToDelete } = await axios.delete(
+        `/api/products/${productId}`
+      );
+      dispatch(_deleteProduct(productToDelete));
+      history.push("/products");
     } catch (error) {
-      console.error("Unable to delete product:", error)
+      console.error("Unable to delete product:", error);
     }
-  }
-}
-
+  };
+};
 
 const productsReducer = (state = [], action) => {
   switch (action.type) {
@@ -93,7 +92,9 @@ const productsReducer = (state = [], action) => {
     case ADD_PRODUCT:
       return [...state, action.newProduct];
     case DELETE_PRODUCT:
-      return state.filter((product) => product.id !== action.productToDelete.id)
+      return state.filter(
+        (product) => product.id !== action.productToDelete.id
+      );
     default:
       return state;
   }
