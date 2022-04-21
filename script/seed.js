@@ -133,7 +133,7 @@ async function seed() {
 						quantity: Math.ceil(10 * Math.random()),
 					},
 				],
-				total: Math.random() * 100,
+				total: Math.random() * 100, //NEED TO CHANGE
 				userId: Math.ceil(2 * Math.random()),
 			});
 		}
