@@ -6,6 +6,9 @@ const Order = db.define("order", {
     type: Sequelize.ENUM("Cart", "Order"),
     defaultValue: "Cart",
   },
+  email: {
+    type: Sequelize.STRING,
+  }
 });
 
 module.exports = Order;
