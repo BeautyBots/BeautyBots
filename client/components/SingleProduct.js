@@ -61,7 +61,8 @@ class SingleProduct extends React.Component {
 
   render() {
     const product = this.props.product;
-    console.log("Product OBJ", product);
+    const reviews = product.reviews || []
+    console.log("Product OBJ", reviews);
     return (
       <div className="product">
         <Link to={`/products/${product.id}/editForm`}>
@@ -89,6 +90,13 @@ class SingleProduct extends React.Component {
               Add to Cart
             </button>
             {/* </form> */}
+
+            <h4>Reviews</h4>
+                {reviews.map((review)=>
+                <div>
+                 <p>{review.body}</p>
+                </div>
+                )}
           </div>
         </div>
       </div>
