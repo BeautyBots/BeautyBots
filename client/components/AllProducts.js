@@ -43,8 +43,10 @@ class AllProducts extends React.Component {
 					<label className="filter">Filter: </label>
 					<select onChange={this.handleSelect}>
 						<option value="all-products">All Products</option>
-						{categories.map((category) => (
-							<option value={category}>{category}</option>
+						{categories.map((category, idx) => (
+							<option key={idx} value={category}>
+								{category}
+							</option>
 						))}
 					</select>
 				</div>
