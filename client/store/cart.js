@@ -41,13 +41,11 @@ export const addToCart = (product) => {
 	return async (dispatch) => {
 		try {
 			const token = window.localStorage.getItem('token');
-			let cart;
+			let cart = window.localStorage.getItem('cart');
 			if (!token) {
-				if (!window.localStorage.getItem('cart')) {
+				if (!cart) {
 					cart = {
-						lineItems: [
-							{ productId: product.id, quantity: 1, product: product },
-						],
+						lineItems: [{ productId: product.id, quantity: 1, product }],
 					};
 					window.localStorage.setItem('cart', JSON.stringify(cart));
 				} else {
@@ -60,11 +58,7 @@ export const addToCart = (product) => {
 							if (item.productId !== product.id) {
 								return item;
 							} else {
-								let quantity = Number(item.quantity);
-								return {
-									...item,
-									quantity: quantity + 1,
-								};
+								return { ...item, quantity: Number(item.quantity) + 1 };
 							}
 						});
 					} else {
@@ -76,13 +70,13 @@ export const addToCart = (product) => {
 					}
 					window.localStorage.setItem('cart', JSON.stringify(cart));
 				}
-				dispatch(_getCart(cart));
 			} else {
 				const res = await axios.post('/api/cart/addToCart', product, {
 					headers: { authorization: token },
 				});
-				dispatch(_getCart(res.data));
+				cart = res.data;
 			}
+			dispatch(_getCart(cart));
 		} catch (error) {
 			console.log('Unable to add to cart:', error);
 		}
