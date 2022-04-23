@@ -92,7 +92,6 @@ export const removeFromCart = (product) => {
 				let idx = cart.lineItems.findIndex(
 					(item) => item.productId === product.id
 				);
-				console.log(cart.lineItems[idx]);
 				if (cart.lineItems[idx].quantity === 1) {
 					cart.lineItems.splice(idx, 1);
 				} else {

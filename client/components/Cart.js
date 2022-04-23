@@ -12,8 +12,6 @@ class Cart extends React.Component {
 	}
 
 	render() {
-		// const products = JSON.parse(localStorage.getItem('products'));
-		console.log('in render', this.props);
 		const lineItem = this.props.cart.lineItems;
 		if (!lineItem) {
 			return <h1>Your cart is empty! buy something pls..</h1>;
@@ -28,8 +26,7 @@ class Cart extends React.Component {
 							<button
 								onClick={() => this.props.removeFromCart(currentItem.product)}
 							>
-								{' '}
-								-{' '}
+								-
 							</button>
 							<p>{currentItem.product.price}</p>
 						</div>

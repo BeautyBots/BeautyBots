@@ -4,13 +4,12 @@ const {
 } = require('../db');
 module.exports = router;
 
+//GET /api/users
 router.get('/', async (req, res, next) => {
 	try {
 		const users = await User.findAll({
-			// explicitly select only the id and username fields - even though
-			// users' passwords are encrypted, it won't help if we just
-			// send everything to anyone who asks!
 			attributes: ['id', 'username', 'email', 'userType'],
+			order: [['username', 'ASC']],
 		});
 		res.json(users);
 	} catch (err) {
@@ -18,6 +17,7 @@ router.get('/', async (req, res, next) => {
 	}
 });
 
+//GET /api/users/:id
 router.get('/:id', async (req, res, next) => {
 	try {
 		const user = await User.findOne({
@@ -33,28 +33,35 @@ router.get('/:id', async (req, res, next) => {
 	}
 });
 
-//Admin Privledge to add other admins
-router.post('/admin', async (req, res, next) => {
+//Admin Priviledge to add other admins
+//PUT /api/users/admin/updateUser/
+router.put('/admin/updateUser/', async (req, res, next) => {
 	try {
-		const [user, wasCreated] = await User.findOrCreate({
-			where: {
-				username: req.body.username,
-				email: req.body.email,
-				password: req.body.password,
-				userType: req.body.userType,
-			},
+		const user = await User.findOne({
+			where: { id: req.body.id },
 		});
-		res.send(user);
+		user.userType = req.body.userType;
+		await user.save();
+		res.send(
+			await User.findAll({
+				attributes: ['id', 'username', 'email', 'userType'],
+			})
+		);
 	} catch (err) {
 		next(err);
 	}
 });
 
+//DELETE /api/users/admin/delete/:id
 router.delete('/admin/delete/:id', async (req, res, next) => {
 	try {
 		const user = await User.findByPk(req.params.id);
 		await user.destroy();
-		res.send('destroyed user');
+		res.send(
+			await User.findAll({
+				attributes: ['id', 'username', 'email', 'userType'],
+			})
+		);
 	} catch (err) {
 		next(err);
 	}
