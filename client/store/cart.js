@@ -87,10 +87,28 @@ export const removeFromCart = (product) => {
 	return async (dispatch) => {
 		try {
 			const token = window.localStorage.getItem('token');
-			const res = await axios.post('/api/cart/removeToCart', product, {
-				headers: { authorization: token },
-			});
-			dispatch(_getCart(res.data));
+			let cart = JSON.parse(window.localStorage.getItem('cart'));
+			if (!token) {
+				let idx = cart.lineItems.findIndex(
+					(item) => item.productId === product.id
+				);
+				console.log(cart.lineItems[idx]);
+				if (cart.lineItems[idx].quantity === 1) {
+					cart.lineItems.splice(idx, 1);
+				} else {
+					cart.lineItems[idx] = {
+						...cart.lineItems[idx],
+						quantity: Number(cart.lineItems[idx].quantity) - 1,
+					};
+				}
+				window.localStorage.setItem('cart', JSON.stringify(cart));
+			} else {
+				const res = await axios.post('/api/cart/removeToCart', product, {
+					headers: { authorization: token },
+				});
+				cart = res.data;
+			}
+			dispatch(_getCart(cart));
 		} catch (error) {
 			console.log('Unable to remove from cart:', error);
 		}
