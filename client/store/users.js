@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+//ACTION TYPES
 const GET_USERS = 'GET_USERS';
 
+//ACTION CREATORS
 const _getUsers = (users) => {
 	return {
 		type: GET_USERS,
@@ -9,6 +11,7 @@ const _getUsers = (users) => {
 	};
 };
 
+//THUNK CREATORS
 export const getUsers = () => {
 	return async (dispatch) => {
 		try {
@@ -24,7 +27,7 @@ export const updateUserType = (user) => {
 	return async (dispatch) => {
 		try {
 			const { data: users } = await axios.put(
-				`/api/users/admin/updateUser/`,
+				`/api/users/updateUserType`,
 				user
 			);
 			dispatch(_getUsers(users));
@@ -38,7 +41,7 @@ export const deleteUser = (user) => {
 	return async (dispatch) => {
 		try {
 			const { data: users } = await axios.delete(
-				`/api/users/admin/delete/${user.id}`
+				`/api/users/delete/${user.id}`
 			);
 			dispatch(_getUsers(users));
 		} catch (error) {
@@ -47,6 +50,7 @@ export const deleteUser = (user) => {
 	};
 };
 
+//REDUCER
 const usersReducer = (state = [], action) => {
 	switch (action.type) {
 		case GET_USERS:

@@ -1,34 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCart, removeFromCart } from '../store/cart';
+import { addToCart, getCart, removeFromCart } from '../store/cart';
 
 class Cart extends React.Component {
 	constructor() {
 		super();
 	}
 
-	componentDidMount() {
-		console.log('this.props in CDM', this.props);
-	}
-
 	render() {
-		const lineItem = this.props.cart.lineItems;
-		if (!lineItem) {
+		const lineItems = this.props.cart.lineItems;
+		if (!lineItems) {
 			return <h1>Your cart is empty! buy something pls..</h1>;
 		} else {
 			return (
 				<div>
-					{lineItem.map((currentItem) => (
-						<div key={currentItem.product.id}>
-							<img src={`${currentItem.product.imageUrl}`} />
-							<p>{currentItem.product.title}</p>
-							<p>{currentItem.quantity}</p>
-							<button
-								onClick={() => this.props.removeFromCart(currentItem.product)}
-							>
+					{lineItems.map((item) => (
+						<div key={item.product.id}>
+							<img src={`${item.product.imageUrl}`} />
+							<p>{item.product.title}</p>
+							<button onClick={() => this.props.removeFromCart(item.product)}>
 								-
 							</button>
-							<p>{currentItem.product.price}</p>
+							<span>{item.quantity}</span>
+							<button onClick={() => this.props.addToCart(item.product)}>
+								+
+							</button>
+							<p>{item.product.price}</p>
 						</div>
 					))}
 					<button>Checkout</button>
@@ -44,6 +41,7 @@ const mapState = ({ cart }) => {
 
 const mapDispatch = (dispatch) => {
 	return {
+		addToCart: (product) => dispatch(addToCart(product)),
 		removeFromCart: (product) => dispatch(removeFromCart(product)),
 		getCart: () => dispatch(getCart()),
 	};

@@ -33,9 +33,9 @@ router.get('/:id', async (req, res, next) => {
 	}
 });
 
-//Admin Priviledge to add other admins
-//PUT /api/users/admin/updateUser/
-router.put('/admin/updateUser/', async (req, res, next) => {
+//ADMIN FEATURES
+//PUT /api/users/updateUserType
+router.put('/updateUserType', async (req, res, next) => {
 	try {
 		const user = await User.findOne({
 			where: { id: req.body.id },
@@ -52,8 +52,8 @@ router.put('/admin/updateUser/', async (req, res, next) => {
 	}
 });
 
-//DELETE /api/users/admin/delete/:id
-router.delete('/admin/delete/:id', async (req, res, next) => {
+//DELETE /api/users/delete/:id
+router.delete('/delete/:id', async (req, res, next) => {
 	try {
 		const user = await User.findByPk(req.params.id);
 		await user.destroy();

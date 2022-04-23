@@ -1,15 +1,17 @@
 import axios from 'axios';
 
+//ACTION TYPES
 const GET_CART = 'GET_CART';
 const EMPTY_CART = 'EMPTY_CART';
 
+//ACTION CREATORS
 const _getCart = (cart) => {
 	return {
 		type: GET_CART,
 		cart,
 	};
 };
-
+//THUNK CREATORS
 export const _emptyCart = () => {
 	return {
 		type: EMPTY_CART,
@@ -102,7 +104,7 @@ export const removeFromCart = (product) => {
 				}
 				window.localStorage.setItem('cart', JSON.stringify(cart));
 			} else {
-				const res = await axios.post('/api/cart/removeToCart', product, {
+				const res = await axios.post('/api/cart/removeFromCart', product, {
 					headers: { authorization: token },
 				});
 				cart = res.data;
@@ -114,6 +116,7 @@ export const removeFromCart = (product) => {
 	};
 };
 
+//REDUCER
 const cartReducer = (state = {}, action) => {
 	switch (action.type) {
 		case GET_CART:
