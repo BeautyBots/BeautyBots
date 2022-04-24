@@ -41,7 +41,7 @@ async function seed() {
 				'Contains antioxidants and hydrating ceramides, making oily areas less noticeable and skin more even. This toner is specially formulated for use with oily skin, combination skin, enlarged pores, blemish-prone skin to balance, refine, and protect your skin.',
 			quantity: 20,
 			category: 'Toner',
-			imageUrl: '/productImages/paulas_choice_toner.png',
+			imageUrl: '/productImages/PaulasC.png',
 		},
 		{
 			title: 'Murad Environmental Shield Essential-C Cleanser',
