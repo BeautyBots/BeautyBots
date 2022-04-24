@@ -26,11 +26,15 @@ class SingleProduct extends React.Component {
   render() {
     const product = this.props.product;
     const reviews = product.reviews || [];
+    const isAdmin = this.props.isAdmin;
+    
     return (
-      <div className="product">
-        <Link to={`/products/${product.id}/editForm`}>
-          <button>Edit Product</button>
-        </Link>
+       <div className="product">
+        {isAdmin && (
+          <Link to={`/products/${product.id}/editForm`}>
+            <button>Edit Product</button>
+          </Link>
+        )}
 
         <div className="product-row">
           <div className="single-product-container">
@@ -45,11 +49,13 @@ class SingleProduct extends React.Component {
               <p>Description: {product.description}</p>
               <p>Product Type: {product.category}</p>
               {/* <form id="change-value">
+
 							<input
 								name="quantity"
 								value={this.state.quantity}
 								onChange={this.handleChange}
 							/> */}
+
               <button onClick={() => this.props.addToCart(product)}>
                 Add to Cart
               </button>
@@ -69,9 +75,12 @@ class SingleProduct extends React.Component {
   }
 }
 
-const mapState = ({ product }) => {
+
+
+const mapState = (state) => {
   return {
-    product,
+    product: state.product,
+    isAdmin: state.auth.userType === "Admin",
   };
 };
 

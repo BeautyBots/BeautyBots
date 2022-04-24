@@ -55,6 +55,7 @@ User.prototype.getCart = async function () {
   let cart = await Order.findOne({
     where,
   });
+  ``;
   if (!cart) {
     cart = await Order.create(where);
   }
@@ -91,6 +92,13 @@ User.prototype.removeFromCart = async function (product) {
   } else {
     await lineItem.destroy();
   }
+  return this.getCart();
+};
+
+User.prototype.createOrder = async function () {
+  const cart = await this.getCart();
+  cart.status = "Order";
+  await cart.save();
   return this.getCart();
 };
 /**
