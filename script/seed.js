@@ -32,7 +32,7 @@ async function seed() {
 	];
 	await Promise.all(users.map((user) => User.create(user)));
 
-	// //Create Products
+	//Creating Products
 	const products = [
 		{
 			title: "Paula's Choice Skin Balancing Pore-Reducing Toner",
@@ -100,7 +100,7 @@ async function seed() {
 	];
 	await Promise.all(products.map((product) => Product.create(product)));
 
-	//Create Reviews
+	//Creating Reviews
 	function reviewsDB() {
 		let reviews = [];
 		for (let i = 0; i < 20; i++) {
@@ -116,7 +116,7 @@ async function seed() {
 	}
 	await Promise.all(reviewsDB().map((review) => Review.create(review)));
 
-	//Create Orders
+	//Creating Orders
 	function ordersDB() {
 		let orders = [
 			{ userId: 1, status: 'Cart' },
@@ -133,12 +133,13 @@ async function seed() {
 	}
 	await Promise.all(ordersDB().map((order) => Order.create(order)));
 
+	//Creating LineItems
 	function lineItemsDB() {
 		let lineItems = [];
-		for (let i = 0; i < 10; i++) {
+		for (let i = 0; i < 6; i++) {
 			lineItems.push({
 				quantity: Math.ceil(3 * Math.random()),
-				productId: Math.ceil(7 * Math.random()),
+				productId: i + 1,
 				orderId: Math.ceil(3 * Math.random()),
 			});
 		}
@@ -193,16 +194,3 @@ if (module === require.main) {
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
 module.exports = seed;
-
-
-
-
-
-
-
-
-
-
-
-
-

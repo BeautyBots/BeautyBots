@@ -1,32 +1,35 @@
-const cartRouter = require("express").Router();
+const cartRouter = require('express').Router();
 const {
-  models: { Order, User },
-} = require("../db");
+	models: { User },
+} = require('../db');
 module.exports = cartRouter;
 
-cartRouter.get("/", async (req, res, next) => {
-  try {
-    const user = await User.findByToken(req.headers.authorization);
-    res.send(await user.getCart());
-  } catch (err) {
-    next(err);
-  }
+//GET /api/cart
+cartRouter.get('/', async (req, res, next) => {
+	try {
+		const user = await User.findByToken(req.headers.authorization);
+		res.send(await user.getCart());
+	} catch (err) {
+		next(err);
+	}
 });
 
-cartRouter.post("/addToCart", async (req, res, next) => {
-  try {
-    const user = await User.findByToken(req.headers.authorization);
-    res.send(await user.addToCart(req.body));
-  } catch (err) {
-    next(err);
-  }
+//POST /api/cart/addToCart
+cartRouter.post('/addToCart', async (req, res, next) => {
+	try {
+		const user = await User.findByToken(req.headers.authorization);
+		res.send(await user.addToCart(req.body));
+	} catch (err) {
+		next(err);
+	}
 });
 
-cartRouter.post("/removeToCart", async (req, res, next) => {
-  try {
-    const user = await User.findByToken(req.headers.authorization);
-    res.send(await user.removeFromCart(req.body));
-  } catch (err) {
-    next(err);
-  }
+//POST /api/cart/removeFromCart
+cartRouter.post('/removeFromCart', async (req, res, next) => {
+	try {
+		const user = await User.findByToken(req.headers.authorization);
+		res.send(await user.removeFromCart(req.body));
+	} catch (err) {
+		next(err);
+	}
 });
