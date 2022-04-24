@@ -36,18 +36,18 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
 /**
  * CONTAINER
  */
- const mapState = (state) => {
-	return {
-		isLoggedIn: !!state.auth.id,
-		isAdmin: state.auth.userType === 'Admin',
-	};
+const mapState = (state) => {
+  return {
+    isLoggedIn: !!state.auth.id,
+    isAdmin: state.auth.userType === "Admin",
+  };
 };
 
 const mapDispatch = (dispatch) => {
   return {
     handleClick() {
       dispatch(logout());
-      dispatch(_emptyCart())
+      dispatch(_emptyCart());
     },
   };
 };
