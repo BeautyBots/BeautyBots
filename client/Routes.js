@@ -6,6 +6,7 @@ import Home from './components/Home';
 import { me } from './store';
 import { getCart } from './store/cart';
 import { getUsers } from './store/users';
+import {getAdminOrders} from "./store/adminOrders"
 
 import AllProducts from './components/AllProducts';
 import SingleProduct from './components/SingleProduct';
@@ -13,6 +14,8 @@ import AddProductForm from './components/AddProductForm';
 import EditProductForm from './components/EditProductForm';
 import Cart from './components/Cart';
 import UserList from './components/UserList';
+import AdminOrders from './components/AdminOrders';
+
 
 /**
  * COMPONENT
@@ -22,6 +25,7 @@ class Routes extends Component {
 		this.props.loadInitialData();
 		this.props.getUsers();
 		this.props.getCart();
+    this.props.getOrders();
 	}
 
 	componentDidUpdate(prevProps) {
@@ -52,6 +56,13 @@ class Routes extends Component {
 								component={EditProductForm}
 							/>
 						)}
+            {isAdmin && (
+							<Route
+                exact
+								path="/orders"
+								component={AdminOrders}
+							/>
+						)}
 						<Route path="/products/:productId" component={SingleProduct} />
 						<Route path="/cart" component={Cart} />
 						{isAdmin && <Route path="/users" component={UserList} />}
@@ -80,6 +91,7 @@ const mapState = (state) => {
 		isLoggedIn: !!state.auth.id,
 		isAdmin: state.auth.userType === 'Admin',
 		cart: state.cart,
+    orders: state.order
 	};
 };
 
@@ -88,6 +100,7 @@ const mapDispatch = (dispatch) => {
 		loadInitialData: () => dispatch(me()),
 		getCart: () => dispatch(getCart()),
 		getUsers: () => dispatch(getUsers()),
+    getOrders: () => dispatch(getAdminOrders())
 	};
 };
 

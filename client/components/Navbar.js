@@ -17,6 +17,7 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
 
           {isAdmin && <Link to="/users">User List</Link>}
           {isAdmin && <Link to="/products/addForm">Add Product</Link>}
+          {isAdmin && <Link to="/orders">All Orders</Link>}
           <Link to="/products">Products</Link>
           <Link to="/cart">Cart</Link>
         </div>
