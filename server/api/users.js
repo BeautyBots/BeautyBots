@@ -17,6 +17,16 @@ router.get('/', async (req, res, next) => {
 	}
 });
 
+//GET /api/users/orderHistory
+router.get('/orderHistory', async (req, res, next) => {
+	try {
+		const user = await User.findByToken(req.headers.authorization);
+		res.send(await user.getOrders());
+	} catch (err) {
+		next(err);
+	}
+});
+
 //GET /api/users/:id
 router.get('/:id', async (req, res, next) => {
 	try {
