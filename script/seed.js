@@ -126,7 +126,13 @@ async function seed() {
 		for (let i = 0; i < 5; i++) {
 			orders.push({
 				userId: Math.ceil(3 * Math.random()),
-				status: 'Order',
+				status: 'Pending',
+			});
+		}
+		for (let i = 0; i < 5; i++) {
+			orders.push({
+				userId: Math.ceil(3 * Math.random()),
+				status: 'Shipped',
 			});
 		}
 		return orders;
