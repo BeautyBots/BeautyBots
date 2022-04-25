@@ -9,20 +9,30 @@ const _createOrder = (order) => {
   };
 };
 
+
 export const createOrder = (cart) => {
   return async (dispatch) => {
     try {
       const token = window.localStorage.getItem("token");
-      const res = await axios.post("/api/cart/createOrder", cart, {
-        headers: { authorization: token },
-      });
-      let order = res.data;
-      dispatch(_createOrder(order));
+      if (token) {
+        const res = await axios.post("/api/cart/createOrder", cart, {
+          headers: { authorization: token },
+        });
+        let order = res.data;
+        dispatch(_createOrder(order));
+      } else {
+        cart = JSON.parse(cart);
+        cart.status = "Pending";
+        const res = await axios.post("/api/cart/createOrderGuest", cart);
+        let order = res.data;
+        dispatch(_createOrder(order));
+      }
     } catch (error) {
       console.log("Unable to create order:", error);
     }
   };
 };
+
 
 //REDUCER
 const orderReducer = (state = {}, action) => {
