@@ -25,7 +25,7 @@ router.get('/:id', async (req, res, next) => {
 				id: req.params.id,
 			},
 			include: [Order],
-			attributes: ['username', 'email', 'userType'],
+			attributes: ['id','username', 'email', 'userType'],
 		});
 		res.send(user);
 	} catch (err) {

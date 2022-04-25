@@ -9,8 +9,8 @@ class Cart extends React.Component {
 	}
 
 	render() {
-		const lineItems = this.props.cart.lineItems;
-		if (lineItems.length === 0 || !lineItems) {
+		const lineItems = this.props.cart.lineItems || [];
+    if (lineItems.length === 0) {
 			return <h1>Your cart is empty! buy something pls..</h1>;
 		} else {
 			return (

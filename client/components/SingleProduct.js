@@ -27,7 +27,7 @@ class SingleProduct extends React.Component {
     const product = this.props.product;
     const reviews = product.reviews || [];
     const isAdmin = this.props.isAdmin;
-    
+
     return (
        <div className="product">
         {isAdmin && (
@@ -62,6 +62,7 @@ class SingleProduct extends React.Component {
               {/* </form> */}
             </div>
             </div>
+
             <h4>Reviews</h4>
             {reviews.map((review) => (
               <div key={review.id}>
@@ -69,6 +70,9 @@ class SingleProduct extends React.Component {
               </div>
             ))}
 
+            <Link to={`/products/${product.id}/addreview`}>
+            <button>Write a review!</button>
+            </Link>
         </div>
       </div>
     );

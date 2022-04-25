@@ -13,6 +13,7 @@ import AddProductForm from './components/AddProductForm';
 import EditProductForm from './components/EditProductForm';
 import Cart from './components/Cart';
 import UserList from './components/UserList';
+import Review from './components/Review';
 
 /**
  * COMPONENT
@@ -52,9 +53,10 @@ class Routes extends Component {
 								component={EditProductForm}
 							/>
 						)}
-						<Route path="/products/:productId" component={SingleProduct} />
+						<Route exact path="/products/:productId" component={SingleProduct} />
 						<Route path="/cart" component={Cart} />
 						{isAdmin && <Route path="/users" component={UserList} />}
+						<Route path ="/products/:productId/addreview" component={Review} />
 					</Switch>
 				) : (
 					<Switch>
@@ -62,8 +64,9 @@ class Routes extends Component {
 						<Route path="/login" component={Login} />
 						<Route path="/signup" component={Signup} />
 						<Route exact path="/products" component={AllProducts} />
-						<Route path="/products/:productId" component={SingleProduct} />
+						<Route exact path="/products/:productId" component={SingleProduct} />
 						<Route path="/cart" component={Cart} />
+						<Route path="/products/:productId/addreview" component={Signup} />
 					</Switch>
 				)}
 			</div>
