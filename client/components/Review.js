@@ -38,7 +38,6 @@ class Review extends React.Component {
 
   render () {
     const product = this.props.product
-    console.log("comp state:",this.state)
     return (
       //need to pass in product id and user id
       <form id="add-review" onSubmit={this.handleSubmit}>
