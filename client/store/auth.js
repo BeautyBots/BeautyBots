@@ -21,8 +21,6 @@ export const me = () => async (dispatch) => {
       },
     });
     dispatch(setAuth(res.data));
-    //redirects to landing page after login
-    // history.push("/home");
   }
 };
 
