@@ -2,6 +2,7 @@ const productRouter = require('express').Router();
 const {
 	models: { Product, Review },
 } = require('../db');
+const User = require('../db/models/User');
 
 //USER FEATURES
 //GET /api/products
@@ -22,7 +23,7 @@ productRouter.get('/:id', async (req, res, next) => {
 			where: {
 				id: req.params.id,
 			},
-			include: [Review],
+			include: [{ model: Review, include: [User] }],
 		});
 		res.send(product);
 	} catch (err) {
