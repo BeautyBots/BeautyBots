@@ -5,7 +5,7 @@ import { logout } from "../store";
 import { _emptyCart } from "../store/cart";
 
 const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
-  <div>
+  <div className="nav-parent">
     <h1>BeautyBots</h1>
     <nav>
       {isLoggedIn ? (
@@ -29,7 +29,6 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
         </div>
       )}
     </nav>
-    <hr />
   </div>
 );
 

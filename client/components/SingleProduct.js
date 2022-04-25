@@ -27,8 +27,9 @@ class SingleProduct extends React.Component {
     const product = this.props.product;
     const reviews = product.reviews || [];
     const isAdmin = this.props.isAdmin;
+    
     return (
-      <div className="product">
+       <div className="product">
         {isAdmin && (
           <Link to={`/products/${product.id}/editForm`}>
             <button>Edit Product</button>
@@ -36,39 +37,45 @@ class SingleProduct extends React.Component {
         )}
 
         <div className="product-row">
-          <div className="product-img">
-            <img src={product.imageUrl} />
-          </div>
+          <div className="single-product-container">
+            <div className="product-img">
+              <img src={product.imageUrl} />
+            </div>
 
-          <div className="product-info">
-            <h2>{product.title}</h2>
-            <p>Price: {product.price}</p>
+            <div className="product-info">
+              <h2>{product.title}</h2>
+              <p>Price: {product.price}</p>
 
-            <p>Description: {product.description}</p>
-            <p>Product Type: {product.category}</p>
-            {/* <form id="change-value">
+              <p>Description: {product.description}</p>
+              <p>Product Type: {product.category}</p>
+              {/* <form id="change-value">
+
 							<input
 								name="quantity"
 								value={this.state.quantity}
 								onChange={this.handleChange}
 							/> */}
-            <button onClick={() => this.props.addToCart(product)}>
-              Add to Cart
-            </button>
-            {/* </form> */}
 
+              <button onClick={() => this.props.addToCart(product)}>
+                Add to Cart
+              </button>
+              {/* </form> */}
+            </div>
+            </div>
             <h4>Reviews</h4>
             {reviews.map((review) => (
               <div key={review.id}>
                 <p>{review.body}</p>
               </div>
             ))}
-          </div>
+
         </div>
       </div>
     );
   }
 }
+
+
 
 const mapState = (state) => {
   return {
