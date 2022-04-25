@@ -16,8 +16,8 @@ import Cart from './components/Cart';
 import UserList from './components/UserList';
 import Review from './components/Review';
 import AdminOrders from './components/AdminOrders';
-
 import OrderHistory from './components/OrderHistory';
+import StripePaymentForm from './components/StripePaymentForm';
 
 /**
  * COMPONENT
@@ -68,6 +68,7 @@ class Routes extends Component {
 						{isAdmin && <Route path="/users" component={UserList} />}
 						<Route path="/products/:productId/addreview" component={Review} />
 						<Route path="/orderHistory" component={OrderHistory} />
+						<Route path="/checkout" component={StripePaymentForm} />
 					</Switch>
 				) : (
 					<Switch>
@@ -81,7 +82,7 @@ class Routes extends Component {
 							component={SingleProduct}
 						/>
 						<Route path="/cart" component={Cart} />
-						<Route path="/products/:productId/addreview" component={Signup} />
+						<Route path="/products/:productId/addreview" component={Login} />
 					</Switch>
 				)}
 			</div>
