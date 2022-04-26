@@ -15,18 +15,11 @@ class Cart extends React.Component {
 		this.handleCheckout = this.handleCheckout.bind(this);
 	}
 
-	componentDidUpdate(prevProps) {
-		console.log('prev:', prevProps.cart);
-		console.log('current:', this.props.cart);
-		if (prevProps.cart.id !== this.props.cart.id) {
-			this.props.getCart();
-		}
-	}
-
 	handleCheckout() {
 		let cart = localStorage.getItem('cart');
 		if (cart) {
 			this.props.createOrder(cart);
+			//do we need to set localstorage cart to empty
 		} else {
 			cart = this.props.cart;
 			this.props.createOrder(cart);
@@ -34,7 +27,6 @@ class Cart extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.cart);
 		const lineItems = this.props.cart.lineItems || [];
 		if (lineItems.length === 0) {
 			return <h1>Your cart is empty! buy something pls..</h1>;

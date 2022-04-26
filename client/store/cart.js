@@ -19,20 +19,27 @@ export const _emptyCart = () => {
 };
 
 //THUNK CREATORS
-
 export const getCart = () => {
 	return async (dispatch) => {
 		try {
+			//get token and cart from localStorage
 			const token = window.localStorage.getItem('token');
-			let cart;
-			if (!token) {
-				cart = JSON.parse(window.localStorage.getItem('cart'));
-				console.log('getCart cart', cart);
-			} else {
+			let cart = JSON.parse(window.localStorage.getItem('cart'));
+			//if user exists...
+			if (token) {
 				const res = await axios.get(`/api/cart`, {
 					headers: { authorization: token },
 				});
-				cart = res.data;
+				// if user cart is empty and localStorage cart is not empty, update user cart to localStorage's cart
+				if (!res.data.lineItems.length && cart) {
+					const res = await axios.post('/api/cart', cart, {
+						headers: { authorization: token },
+					});
+					cart = res.data;
+				} else {
+					//if user cart is not empty cart is from back-end
+					cart = res.data;
+				}
 			}
 			dispatch(_getCart(cart));
 		} catch (error) {

@@ -14,6 +14,22 @@ cartRouter.get('/', async (req, res, next) => {
 	}
 });
 
+//POST /api/cart (ONLY IF CART IS EMPTY AND GUEST LOGS IN)
+cartRouter.post('/', async (req, res, next) => {
+	try {
+		const user = await User.findByToken(req.headers.authorization);
+		const order = await Order.findOne({
+			where: { userId: user.id, status: 'Cart' },
+		});
+		req.body.lineItems.forEach((lineItem) => {
+			LineItem.create({ ...lineItem, orderId: order.id });
+		});
+		res.send(await user.getCart());
+	} catch (err) {
+		next(err);
+	}
+});
+
 //POST /api/cart/createOrder FOR AUTH USERS
 cartRouter.post('/createOrder', async (req, res, next) => {
 	try {

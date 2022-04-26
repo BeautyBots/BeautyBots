@@ -60,7 +60,8 @@ User.prototype.getCart = async function () {
 	if (!cart) {
 		cart = await Order.create(where);
 	}
-	return Order.findByPk(cart.id, {
+	console.log(cart);
+	return await Order.findByPk(cart.id, {
 		include: [{ model: LineItem, include: [Product] }],
 	});
 };

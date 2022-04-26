@@ -43,7 +43,6 @@ class Routes extends Component {
 				{isLoggedIn ? (
 					<Switch>
 						<Route path="/home" component={Home} />
-
 						<Route exact path="/products" component={AllProducts} />
 						{isAdmin && (
 							<Route
