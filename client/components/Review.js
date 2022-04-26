@@ -37,7 +37,7 @@ class Review extends React.Component {
 	}
 
 	render() {
-		const product = this.props.product;
+		const { product, username } = this.props;
 		return (
 			//need to pass in product id and user id
 			<form id="add-review" onSubmit={this.handleSubmit}>
@@ -49,6 +49,7 @@ class Review extends React.Component {
 					value={this.body}
 					onChange={this.handleChange}
 				/>
+				<label>Written By: {username}</label>
 
 				<button type="submit">Submit</button>
 			</form>
@@ -59,6 +60,7 @@ class Review extends React.Component {
 const mapState = (state) => {
 	return {
 		product: state.product,
+		username: state.auth.username,
 	};
 };
 

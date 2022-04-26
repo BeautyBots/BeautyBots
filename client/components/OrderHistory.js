@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getOrderHistory } from '../store/orderHistory';
-import SingleOrder from './SingleOrder';
-import { Accordion } from 'react-bootstrap-accordion';
+import { Accordion } from 'react-bootstrap';
 
 class OrderHistory extends React.Component {
 	constructor(props) {

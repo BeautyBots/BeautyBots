@@ -1,6 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCart, getCart, removeFromCart } from '../store/cart';
+import { Link } from 'react-router-dom';
+import {
+	addToCart,
+	getCart,
+	removeFromCart,
+	removeProduct,
+} from '../store/cart';
 import { createOrder } from '../store/order';
 
 class Cart extends React.Component {
@@ -13,11 +19,13 @@ class Cart extends React.Component {
 		let cart = localStorage.getItem('cart');
 		if (cart) {
 			this.props.createOrder(cart);
+			//do we need to set localstorage cart to empty
 		} else {
 			cart = this.props.cart;
 			this.props.createOrder(cart);
 		}
 	}
+
 	render() {
 		const lineItems = this.props.cart.lineItems || [];
 		if (lineItems.length === 0) {
@@ -36,10 +44,15 @@ class Cart extends React.Component {
 							<button onClick={() => this.props.addToCart(item.product)}>
 								+
 							</button>
+							<button onClick={() => this.props.removeProduct(item.product)}>
+								Remove
+							</button>
 							<p>{item.product.price}</p>
 						</div>
 					))}
-					<button onClick={this.handleCheckout}>Checkout</button>
+					<Link to="/checkout" onClick={this.handleCheckout}>
+						Checkout
+					</Link>
 				</div>
 			);
 		}
@@ -52,9 +65,10 @@ const mapState = ({ cart }) => {
 
 const mapDispatch = (dispatch) => {
 	return {
+		getCart: () => dispatch(getCart()),
 		addToCart: (product) => dispatch(addToCart(product)),
 		removeFromCart: (product) => dispatch(removeFromCart(product)),
-		getCart: () => dispatch(getCart()),
+		removeProduct: (product) => dispatch(removeProduct(product)),
 		createOrder: (cart) => dispatch(createOrder(cart)),
 	};
 };

@@ -60,7 +60,8 @@ User.prototype.getCart = async function () {
 	if (!cart) {
 		cart = await Order.create(where);
 	}
-	return Order.findByPk(cart.id, {
+	console.log(cart);
+	return await Order.findByPk(cart.id, {
 		include: [{ model: LineItem, include: [Product] }],
 	});
 };
@@ -93,6 +94,15 @@ User.prototype.removeFromCart = async function (product) {
 	} else {
 		await lineItem.destroy();
 	}
+	return this.getCart();
+};
+
+User.prototype.removeProduct = async function (product) {
+	const cart = await this.getCart();
+	const lineItem = cart.lineItems.find(
+		(lineItem) => lineItem.productId === Number(product.productId)
+	);
+	await lineItem.destroy();
 	return this.getCart();
 };
 
