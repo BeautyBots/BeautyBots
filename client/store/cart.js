@@ -5,7 +5,7 @@ const GET_CART = 'GET_CART';
 const EMPTY_CART = 'EMPTY_CART';
 
 //ACTION CREATORS
-const _getCart = (cart) => {
+export const _getCart = (cart) => {
 	return {
 		type: GET_CART,
 		cart,

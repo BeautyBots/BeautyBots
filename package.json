@@ -4,7 +4,7 @@
   "description": "Some boilerplate code to get you started - get shakin'!",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack && npm run seed",
     "build:dev": "npm run build -- --watch --mode=development",
     "seed": "node script/seed.js",
     "start": "node server",
@@ -46,7 +46,6 @@
     "@babel/register": "^7.12.10",
     "@faker-js/faker": "^6.1.2",
     "autoprefixer": "^10.4.5",
-    "axios": "^0.21.1",
     "axios-mock-adapter": "^1.16.0",
     "babel-loader": "^8.2.2",
     "chai": "^4.2.0",

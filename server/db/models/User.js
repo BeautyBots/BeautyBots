@@ -56,11 +56,10 @@ User.prototype.getCart = async function () {
 	let cart = await Order.findOne({
 		where,
 	});
-	``;
+
 	if (!cart) {
 		cart = await Order.create(where);
 	}
-	console.log(cart);
 	return await Order.findByPk(cart.id, {
 		include: [{ model: LineItem, include: [Product] }],
 	});
