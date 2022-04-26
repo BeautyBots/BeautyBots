@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getFilteredProducts, getProducts } from "../store/products";
 import { addToCart } from "../store/cart";
+import { Row, Col, Card } from "react-bootstrap";
 
 class AllProducts extends React.Component {
   constructor(props) {
@@ -51,8 +52,28 @@ class AllProducts extends React.Component {
             ))}
           </select>
         </div>
+        <Row xs={1} md={3} className="g-4">
+          {products.map((product) => (
+            <Col key={product.id} className="col-sm-4 py-2">
+              <Card className="card h-100">
+                <Link to={`/products/${product.id}`}>
+                  <Card.Img variant="top" src={product.imageUrl} />
+                </Link>
+                <Card.Body>
+                  <Link to={`/products/${product.id}`}>
+                    <Card.Title>{product.title}</Card.Title>
+                    <Card.Text>${product.price}</Card.Text>
+                  </Link>
+                  <button onClick={() => this.props.addToCart(product)}>
+                    Add to Cart
+                  </button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
 
-        <div id="products">
+        {/* <div id="products">
           {products.map((product) => (
             <div key={product.id} id={product.id} className="product-link">
               <Link to={`/products/${product.id}`}>
@@ -65,7 +86,7 @@ class AllProducts extends React.Component {
               </button>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     );
   }
