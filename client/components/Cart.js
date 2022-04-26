@@ -7,29 +7,23 @@ import {
 	removeFromCart,
 	removeProduct,
 } from '../store/cart';
-import { createOrder } from '../store/order';
 
 class Cart extends React.Component {
 	constructor() {
 		super();
-		this.handleCheckout = this.handleCheckout.bind(this);
-	}
-
-	handleCheckout() {
-		let cart = localStorage.getItem('cart');
-		if (cart) {
-			this.props.createOrder(cart);
-			//do we need to set localstorage cart to empty
-		} else {
-			cart = this.props.cart;
-			this.props.createOrder(cart);
-		}
 	}
 
 	render() {
+
 		const lineItems = this.props.cart.lineItems || [];
 		if (lineItems.length === 0) {
-			return <h1>Your cart is empty! buy something pls..</h1>;
+			return (
+				<div>
+					<img src="/productImages/shopping_cart.png" />
+					<h1>Your Cart is Empty</h1>
+					<Link to="/products">Continue Shopping</Link>
+				</div>
+			)
 		} else {
 			return (
 				<div>
@@ -50,7 +44,7 @@ class Cart extends React.Component {
 							<p>{item.product.price}</p>
 						</div>
 					))}
-					<Link to="/checkout" onClick={this.handleCheckout}>
+					<Link to="/checkout" >
 						Checkout
 					</Link>
 				</div>
@@ -69,7 +63,6 @@ const mapDispatch = (dispatch) => {
 		addToCart: (product) => dispatch(addToCart(product)),
 		removeFromCart: (product) => dispatch(removeFromCart(product)),
 		removeProduct: (product) => dispatch(removeProduct(product)),
-		createOrder: (cart) => dispatch(createOrder(cart)),
 	};
 };
 

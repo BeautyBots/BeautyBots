@@ -1,4 +1,5 @@
 import axios from "axios";
+import {_getCart} from "./cart"
 
 const CREATE_ORDER = "CREATE_ORDER";
 
@@ -20,12 +21,17 @@ export const createOrder = (cart) => {
         });
         let order = res.data;
         dispatch(_createOrder(order));
+        dispatch(_getCart(order))
       } else {
         cart = JSON.parse(cart);
         cart.status = "Pending";
         const res = await axios.post("/api/cart/createOrderGuest", cart);
         let order = res.data;
         dispatch(_createOrder(order));
+        window.localStorage.setItem("cart",JSON.stringify({"lineItems":[]}))
+        const emptyCart = JSON.parse(window.localStorage.getItem("cart"))
+        dispatch(_getCart(emptyCart))
+
       }
     } catch (error) {
       console.log("Unable to create order:", error);

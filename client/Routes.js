@@ -31,10 +31,13 @@ class Routes extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
+
 		if (!prevProps.isLoggedIn && this.props.isLoggedIn) {
 			this.props.getCart();
 		}
+
 	}
+
 
 	render() {
 		const { isLoggedIn, isAdmin } = this.props;
@@ -71,6 +74,7 @@ class Routes extends Component {
 					</Switch>
 				) : (
 					<Switch>
+						<Route path="/home" component={Home} />
 						<Route path="/" exact component={Login} />
 						<Route path="/login" component={Login} />
 						<Route path="/signup" component={Signup} />

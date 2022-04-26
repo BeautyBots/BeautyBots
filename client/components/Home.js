@@ -4,7 +4,10 @@ import { Carousel } from "react-bootstrap";
 
 //COMPONENT
 export const Home = (props) => {
-  const { username } = props;
+  let { username } = props;
+  if (!username) {
+    username = "Guest"
+  }
   const name = username[0].toUpperCase() + username.slice(1);
 
   return (
