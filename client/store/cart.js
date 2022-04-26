@@ -47,6 +47,25 @@ export const getCart = () => {
 		}
 	};
 };
+// export const getCart = () => {
+//   return async (dispatch) => {
+//     try {
+//       const token = window.localStorage.getItem("token");
+//       let cart;
+//       if (!token) {
+//         cart = JSON.parse(window.localStorage.getItem("cart"));
+//         console.log("getCart cart", cart);
+//       } else {
+//         const res = await axios.get(`/api/cart`, {
+//           headers: { authorization: token },
+//         });
+//         cart = res.data;
+//       }
+//       dispatch(_getCart(cart));
+//     } catch (error) {
+//       console.error("Unable to get cart: ", error);
+//     }
+//   };
 
 export const addToCart = (product) => {
 	return async (dispatch) => {
