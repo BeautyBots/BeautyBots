@@ -33,6 +33,7 @@
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
     "postcss-loader": "^6.2.1",
+
     "react-bootstrap": "^2.3.0",
     "react-bootstrap-accordion": "^1.0.0",
     "sass-loader": "^12.6.0",
