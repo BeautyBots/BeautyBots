@@ -53,3 +53,5 @@ describe('User model', () => {
     }) // end describe('authenticate')
   }) // end describe('instanceMethods')
 }) // end describe('User model')
+
+
