@@ -96,6 +96,15 @@ User.prototype.removeFromCart = async function (product) {
 	return this.getCart();
 };
 
+User.prototype.removeProduct = async function (product) {
+	const cart = await this.getCart();
+	const lineItem = cart.lineItems.find(
+		(lineItem) => lineItem.productId === Number(product.productId)
+	);
+	await lineItem.destroy();
+	return this.getCart();
+};
+
 User.prototype.createOrder = async function () {
 	const cart = await this.getCart();
 	cart.status = 'Pending';

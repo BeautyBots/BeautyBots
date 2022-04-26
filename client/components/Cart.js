@@ -1,12 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCart, getCart, removeFromCart } from '../store/cart';
+import { Link } from 'react-router-dom';
+import {
+	addToCart,
+	getCart,
+	removeFromCart,
+	removeProduct,
+} from '../store/cart';
 import { createOrder } from '../store/order';
 
 class Cart extends React.Component {
 	constructor() {
 		super();
 		this.handleCheckout = this.handleCheckout.bind(this);
+	}
+
+	componentDidUpdate(prevProps) {
+		console.log('prev:', prevProps.cart);
+		console.log('current:', this.props.cart);
+		if (prevProps.cart.id !== this.props.cart.id) {
+			this.props.getCart();
+		}
 	}
 
 	handleCheckout() {
@@ -18,7 +32,9 @@ class Cart extends React.Component {
 			this.props.createOrder(cart);
 		}
 	}
+
 	render() {
+		console.log(this.props.cart);
 		const lineItems = this.props.cart.lineItems || [];
 		if (lineItems.length === 0) {
 			return <h1>Your cart is empty! buy something pls..</h1>;
@@ -36,10 +52,15 @@ class Cart extends React.Component {
 							<button onClick={() => this.props.addToCart(item.product)}>
 								+
 							</button>
+							<button onClick={() => this.props.removeProduct(item.product)}>
+								Remove
+							</button>
 							<p>{item.product.price}</p>
 						</div>
 					))}
-					<button onClick={this.handleCheckout}>Checkout</button>
+					<Link to="/checkout" onClick={this.handleCheckout}>
+						Checkout
+					</Link>
 				</div>
 			);
 		}
@@ -52,9 +73,10 @@ const mapState = ({ cart }) => {
 
 const mapDispatch = (dispatch) => {
 	return {
+		getCart: () => dispatch(getCart()),
 		addToCart: (product) => dispatch(addToCart(product)),
 		removeFromCart: (product) => dispatch(removeFromCart(product)),
-		getCart: () => dispatch(getCart()),
+		removeProduct: (product) => dispatch(removeProduct(product)),
 		createOrder: (cart) => dispatch(createOrder(cart)),
 	};
 };

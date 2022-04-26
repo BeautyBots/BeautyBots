@@ -83,6 +83,7 @@ class Routes extends Component {
 						/>
 						<Route path="/cart" component={Cart} />
 						<Route path="/products/:productId/addreview" component={Login} />
+						<Route path="/checkout" component={StripePaymentForm} />
 					</Switch>
 				)}
 			</div>
