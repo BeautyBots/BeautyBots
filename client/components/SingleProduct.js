@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getOneProduct } from '../store/singleProduct';
 import { addToCart } from '../store/cart';
+import { Button, Image } from "react-bootstrap";
 
 class SingleProduct extends React.Component {
 	constructor() {
@@ -36,17 +37,17 @@ class SingleProduct extends React.Component {
 				)}
 
 				<div className="product-row">
-					<div className="single-product-container">
+					<div className="single-product-container polaroid">
 						<div className="product-img">
 							<img src={product.imageUrl} />
 						</div>
 
 						<div className="product-info">
-							<h2>{product.title}</h2>
-							<p>Price: {product.price}</p>
+							<h2 className="moontime display-2">{product.title}</h2>
+							<h3 className="glacial">Price: {product.price}</h3>
 
-							<p>Description: {product.description}</p>
-							<p>Product Type: {product.category}</p>
+							<h3 className="glacial padding20">{product.description}</h3>
+							<h6 className="glacial">Product Type: {product.category}</h6>
 							{/* <form id="change-value">
 
 							<input
@@ -55,24 +56,25 @@ class SingleProduct extends React.Component {
 								onChange={this.handleChange}
 							/> */}
 
-							<button onClick={() => this.props.addToCart(product)}>
+							<Button variant="outline-secondary" className="btn-lg padding20" onClick={() => this.props.addToCart(product)}>
 								Add to Cart
-							</button>
+							</ Button>
 							{/* </form> */}
 						</div>
 					</div>
-
-					<h4>Reviews</h4>
+          <div className="reviews-container">
+					<h4 className="moontime display-4">reviews</h4>
 					{reviews.map((review) => (
 						<div key={review.id}>
-							<p>{review.body}</p>
-							<p>{`By: ${review.user.username}`}</p>
+							<p className="glacial display-5">{review.body}</p>
+							<p className="glacial">{`By: ${review.user.username}`}</p>
 						</div>
 					))}
 
 					<Link to={`/products/${product.id}/addreview`}>
-						<button>Write a review!</button>
+						<Button variant="outline-secondary">Write a review!</Button>
 					</Link>
+          </div>
 				</div>
 			</div>
 		);

@@ -1,44 +1,48 @@
 import React from "react";
 import { connect } from "react-redux";
 import { authenticate } from "../store";
-
+import { Button, Form, Image } from "react-bootstrap";
 /**
  * COMPONENT
  */
 const AuthForm = (props) => {
   const { name, displayName, handleSubmit, error } = props;
 
+  return (
+    <div>
 
-	return (
-		<div>
-			<form className="login-signup-form" onSubmit={handleSubmit} name={name}>
-				<div>
-					<label htmlFor="username">
-						<small>Username</small>
-					</label>
-					<input name="username" type="text" />
-				</div>
-				<div>
-					<label htmlFor="password">
-						<small>Password</small>
-					</label>
-					<input name="password" type="password" />
-				</div>
-				{name === 'signup' ? (
-					<div>
-						<label htmlFor="email">
-							<small>Email</small>
-						</label>
-						<input name="email" type="email" />
-					</div>
-				) : null}
-				<div>
-					<button type="submit">{displayName}</button>
-				</div>
-				{error && error.response && <div> {error.response.data} </div>}
-			</form>
-		</div>
-	);
+      <Form className="login-signup-form" onSubmit={handleSubmit} name={name}>
+        <Image src="/productImages/WatermelonHero.jpg" roundedCircle className="signupImg" alt="Responsive image"/>
+        <div className="signup-area-div">
+          <h1 className="moontime display-1">{name[0] === "l" ? "Login" : "Sign Up"}</h1>
+        <Form.Group>
+          <Form.Label htmlFor="username">Username</Form.Label>
+          <Form.Control  placeholder="Username" name="username" type="username" type="text" />
+        </Form.Group>
+        <Form.Group controlId="formBasicPassword">
+          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Control
+            name="password"
+            type="password"
+            placeholder="Password"
+          />
+        </Form.Group>
+        {name === "signup" ? (
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label htmlFor="email">Email</Form.Label>
+            <Form.Control placeholder="Email" name="email" type="email" />
+          </Form.Group>
+        ) : null}
+        <div>
+          <Button variant="outline-secondary" type="submit">
+            {displayName}
+          </Button>
+        </div>
+        </div>
+        {error && error.response && <div> {error.response.data} </div>}
+      </Form>
+    </div>
+  );
 };
 
 /**
