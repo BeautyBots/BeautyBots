@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addProduct } from '../store/products';
+import { Button } from 'react-bootstrap';
 
 class AddProductForm extends React.Component {
 	constructor(props) {
@@ -16,6 +17,7 @@ class AddProductForm extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
+
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value,
@@ -59,38 +61,93 @@ class AddProductForm extends React.Component {
 			'Treatments',
 		];
 		return (
-			<form id="add-product-form" onSubmit={this.handleSubmit}>
-				<label htmlFor="title">Product Name:</label>
-				<input name="title" onChange={this.handleChange} value={title} />
+			<div className="product-forms">
+				<form className="add-product-form" onSubmit={this.handleSubmit}>
+					<h1>Add New Product: </h1>
 
-				<label htmlFor="price">Price:</label>
-				<input name="price" onChange={this.handleChange} value={price} />
+					<div className="elements">
+						<div className="short-element">
+							<label htmlFor="title">Product Name:</label>
+							<input
+								type="text"
+								name="title"
+								onChange={this.handleChange}
+								value={title}
+							/>
+						</div>
 
-				<label htmlFor="description">Description:</label>
-				<input
-					name="description"
-					onChange={this.handleChange}
-					value={description}
-				/>
+						<div className="short-element">
+							<label htmlFor="price">Price:</label>
+							<input
+								type="text"
+								name="price"
+								onChange={this.handleChange}
+								value={price}
+							/>
+						</div>
+					</div>
 
-				<label htmlFor="quantity">Quantity:</label>
-				<input name="quantity" onChange={this.handleChange} value={quantity} />
+					<div className="elements">
+						<div className="short-element">
+							<label htmlFor="quantity">Quantity:</label>
+							<input
+								type="text"
+								name="quantity"
+								onChange={this.handleChange}
+								value={quantity}
+							/>
+						</div>
 
-				<label className="category">Category: </label>
-				<select name="category" onChange={this.handleChange} value={category}>
-					<option>Select Category</option>
-					{categories.map((category, idx) => (
-						<option key={idx} value={category}>
-							{category}
-						</option>
-					))}
-				</select>
+						<div className="short-element">
+							<label className="category">Category: </label>
+							<select
+								name="category"
+								onChange={this.handleChange}
+								value={category}
+							>
+								<option>Select Category</option>
+								{categories.map((category, idx) => (
+									<option key={idx} value={category}>
+										{category}
+									</option>
+								))}
+							</select>
+						</div>
+					</div>
 
-				<label htmlFor="imageUrl">imageUrl:</label>
-				<input name="imageUrl" onChange={this.handleChange} value={imageUrl} />
+					<div className="elements">
+						<div className="long-element">
+							<label htmlFor="description">Description:</label>
+							<textarea
+								type="text"
+								name="description"
+								onChange={this.handleChange}
+								value={description}
+							>
+								{`${this.state.description}`}
+							</textarea>
+						</div>
+					</div>
 
-				<button type="submit">Submit</button>
-			</form>
+					<div className="elements">
+						<div className="long-element">
+							<label htmlFor="imageUrl">Image Url:</label>
+							<input
+								type="text"
+								name="imageUrl"
+								onChange={this.handleChange}
+								value={imageUrl}
+							/>
+						</div>
+					</div>
+
+					<div className="elements">
+						<Button variant="outline-secondary" size="sm" type="submit">
+							Submit
+						</Button>
+					</div>
+				</form>
+			</div>
 		);
 	}
 }
