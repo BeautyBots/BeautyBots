@@ -64,8 +64,12 @@ class Review extends React.Component {
               readOnly
             />
           </Form.Group>
+
           <Form.Group className="mb-3" >
             <Form.Label>Review</Form.Label>
+						<Form.Text id="passwordHelpBlock" muted>
+							Your review must be between 30 - 500 characters
+						</Form.Text>
             <Form.Control
 							type="text"
 							name="body"
@@ -73,7 +77,6 @@ class Review extends React.Component {
 							onChange={this.handleChange}
               as="textarea"
               rows={10}
-              placeholder="Write your review here!"
             />
           </Form.Group>
 
