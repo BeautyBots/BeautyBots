@@ -6,7 +6,7 @@ class AdminOrderInfo extends React.Component {
 		this.state = {
 			id: this.props.order.id,
 			status: this.props.order.status,
-			username: this.props.order.user.username,
+			username: this.props.order.user ? this.props.order.user.username : 'guest'
 		};
 	}
 
