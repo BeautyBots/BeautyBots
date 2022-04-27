@@ -22,7 +22,7 @@ label {
 .nav-parent {
   display: flex;
   justify-content: space-between;
-  padding: 1%;
+  padding: 0.5%;
   background: #DAE3E6;
 }
 
@@ -73,19 +73,20 @@ img {
 }
 
 .carousel-item img {
-  height: 700px !important
+  height: 650px !important;
 }
 
 .home-card {
   padding: 2rem;
-  width: 25rem;
+  width: 70%;
   background-color: #FAF9F6 !important;
-  opacity: 75%
+  opacity: 90%;
+  border-radius:5% !important
 }
 
 .home-card:hover {
   opacity:100%;
-  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.918) !important
 }
 .home-col {
   display:flex;
