@@ -6,7 +6,7 @@ import { _emptyCart } from '../store/cart';
 
 const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
 	<div className="nav-parent" fixed="top">
-		<h2 className = "nav-brand">BeautyBots</h2>
+		<h2 className = "nav-brand moontime display-4">BeautyBots</h2>
 		<nav>
 			{isLoggedIn ? (
 				<div className="nav-link">
@@ -22,7 +22,7 @@ const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
 					<Link to="/orderHistory">OrderHistory</Link>
 				</div>
 			) : (
-				<div>
+				<div className="nav-link">
 					<Link to="/home">Home</Link>
 					<Link to="/login">Login</Link>
 					<Link to="/signup">Sign Up</Link>
