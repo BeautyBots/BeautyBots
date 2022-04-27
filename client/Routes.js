@@ -31,13 +31,10 @@ class Routes extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-
 		if (!prevProps.isLoggedIn && this.props.isLoggedIn) {
 			this.props.getCart();
 		}
-
 	}
-
 
 	render() {
 		const { isLoggedIn, isAdmin } = this.props;
@@ -45,6 +42,7 @@ class Routes extends Component {
 			<div>
 				{isLoggedIn ? (
 					<Switch>
+						<Redirect from="/login" to="/home" />
 						<Route path="/home" component={Home} />
 						<Route exact path="/products" component={AllProducts} />
 						{isAdmin && (
@@ -75,7 +73,7 @@ class Routes extends Component {
 				) : (
 					<Switch>
 						<Route path="/home" component={Home} />
-						<Route path="/" exact component={Login} />
+						<Route exact path="/" component={Home} />
 						<Route path="/login" component={Login} />
 						<Route path="/signup" component={Signup} />
 						<Route exact path="/products" component={AllProducts} />

@@ -33,6 +33,17 @@ productRouter.get('/:id', async (req, res, next) => {
 });
 
 //ADMIN FEATURES
+//POST /api/products
+productRouter.post('/', async (req, res, next) => {
+	try {
+		const product = await Product.create(req.body);
+		res.send(product);
+	} catch (err) {
+		console.log(err);
+		next(err);
+	}
+});
+
 //PUT /api/products/:id
 productRouter.put('/:id', async (req, res, next) => {
 	try {
@@ -50,17 +61,6 @@ productRouter.delete('/:id', async (req, res, next) => {
 	try {
 		const product = await Product.findByPk(req.params.id);
 		await product.destroy();
-		res.send(product);
-	} catch (err) {
-		console.log(err);
-		next(err);
-	}
-});
-
-//POST /api/products
-productRouter.post('/', async (req, res, next) => {
-	try {
-		const product = await Product.create(req.body);
 		res.send(product);
 	} catch (err) {
 		console.log(err);

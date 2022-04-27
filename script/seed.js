@@ -79,15 +79,14 @@ async function seed() {
 			category: 'Mask',
 			imageUrl: '/productImages/shvyog_face_mask.png',
 		},
-    {
-      title: 'FORMULA 10.0.6 Seriously Shine-Free Moisturizer',
+		{
+			title: 'FORMULA 10.0.6 Seriously Shine-Free Moisturizer',
 			price: 6.0,
-			description:
-				'Aloe vera softens while bamboo extract absorbs excess oil.',
+			description: 'Aloe vera softens while bamboo extract absorbs excess oil.',
 			quantity: 20,
 			category: 'Moisturizer',
 			imageUrl: '/productImages/Formula1006.png',
-    },
+		},
 		{
 			title: 'PanOxyl Acne Foaming Wash',
 			price: 10.0,
@@ -106,16 +105,16 @@ async function seed() {
 			category: 'Cleanser',
 			imageUrl: '/productImages/youthtothepeople_face_cleanser.png',
 		},
-    {
+		{
 			title: 'Neutrogena Liquid Fragrance-Free Gentle Facial Cleanser',
 			price: 8.0,
 			description:
-				'Hypoallergenic cleanser is dermatologist proven to be mild and its unique formula is also oil-free and non-comedogenic so it won\'t clog pores. It makes the perfect addition to your daily beauty and skincare routine for an at-home self-care experience.',
+				"Hypoallergenic cleanser is dermatologist proven to be mild and its unique formula is also oil-free and non-comedogenic so it won't clog pores. It makes the perfect addition to your daily beauty and skincare routine for an at-home self-care experience.",
 			quantity: 20,
 			category: 'Cleanser',
 			imageUrl: '/productImages/LiquidNeutragena.png',
 		},
-    {
+		{
 			title: 'Pacifica Beauty Sea Foam Face Cleanser',
 			price: 10.0,
 			description:
@@ -124,7 +123,7 @@ async function seed() {
 			category: 'Cleanser',
 			imageUrl: '/productImages/PacificSeaFoam.png',
 		},
-    {
+		{
 			title: 'THAYERS Alcohol-Free Rose Petal Witch Hazel Facial Toner',
 			price: 11.0,
 			description:
@@ -133,75 +132,68 @@ async function seed() {
 			category: 'Toner',
 			imageUrl: '/productImages/ThayersWitchHazel.png',
 		},
-    {
+		{
 			title: 'PYUNKANG YUL Facial Essence Toner',
 			price: 12.0,
-			description:
-				`Pyunkang Yul Eastern Medicine Clinic, specialized in treating skin and respiratory
+			description: `Pyunkang Yul Eastern Medicine Clinic, specialized in treating skin and respiratory
         diseases for about 50 years, the toner helps to calm angry skin comfortably by carefully selected ingredients found in nature and rigorous testing.`,
 			quantity: 20,
 			category: 'Toner',
 			imageUrl: '/productImages/PyunkangToner.png',
 		},
-    {
+		{
 			title: 'Bliss Glow Boosting Multivitamin Toner',
 			price: 10.0,
-			description:
-				`FRAGRANCE FREE & FREE OF HARSH CHEMICALS including parabens, phthalates, SLS, SLES and other bad stuff you don't want on your skin or body, as well as PETA-certified and cruelty-free`,
+			description: `FRAGRANCE FREE & FREE OF HARSH CHEMICALS including parabens, phthalates, SLS, SLES and other bad stuff you don't want on your skin or body, as well as PETA-certified and cruelty-free`,
 			quantity: 20,
 			category: 'Toner',
 			imageUrl: '/productImages/BlissToner.png',
 		},
-    {
+		{
 			title: 'Glow Recipe Watermelon Glow BHA + PHA Pore-Tight Facial Toner',
 			price: 34.0,
-			description:
-				`Hydrating Watermelon Extract - Hydrates, delivers essential vitamins and amino acids, and helps to soothe skin. This hydrating ingredient in this facial toner also helps with fine lines and dark spots.`,
+			description: `Hydrating Watermelon Extract - Hydrates, delivers essential vitamins and amino acids, and helps to soothe skin. This hydrating ingredient in this facial toner also helps with fine lines and dark spots.`,
 			quantity: 20,
 			category: 'Toner',
 			imageUrl: '/productImages/GlowWatermelonToner.png',
 		},
-    {
+		{
 			title: 'Neutrogena Triple Age Repair Moisturizer with SPF 25',
 			price: 16.0,
-			description:
-				`Our anti-aging daily moisturizer is clinically proven to help smooth the look of wrinkles, even skin tone, and visibly firm skin for a difference you can see in just as little as 4 weeks, revealing smoother and younger-looking skin`,
+			description: `Our anti-aging daily moisturizer is clinically proven to help smooth the look of wrinkles, even skin tone, and visibly firm skin for a difference you can see in just as little as 4 weeks, revealing smoother and younger-looking skin`,
 			quantity: 20,
 			category: 'Moisturizer',
 			imageUrl: '/productImages/NeutrogenaTripleAgeRepair.png',
 		},
-    {
+		{
 			title: 'Tatcha The Dewy Skin Cream',
 			price: 70.0,
-			description:
-				`A RICH CREAM that feeds skin with plumping hydration and antioxidant-packed Japanese purple rice for a dewy, healthy glow. Ideal for dry skin, but can be used on combo skin for those who prefer a richer texture.`,
+			description: `A RICH CREAM that feeds skin with plumping hydration and antioxidant-packed Japanese purple rice for a dewy, healthy glow. Ideal for dry skin, but can be used on combo skin for those who prefer a richer texture.`,
 			quantity: 20,
 			category: 'Moisturizer',
 			imageUrl: '/productImages/TachaMoisturizer.png',
 		},
-    {
+		{
 			title: 'FaceTory Best of Seven Facial Masks Collection',
 			price: 14.0,
-			description:
-				`ALL SKIN TYPES- each mask focuses on a different skin concern to help boost radiance and support the skin. Contains 7 different sheet masks that add hydration and balance skin.`,
+			description: `ALL SKIN TYPES- each mask focuses on a different skin concern to help boost radiance and support the skin. Contains 7 different sheet masks that add hydration and balance skin.`,
 			quantity: 20,
 			category: 'Mask',
 			imageUrl: '/productImages/BestOfSevenSheetMask.png',
 		},
-    {
-			title: 'FaceTory Moon Velvet Moisturizing Cream with Jojoba Oil Sheet Mask',
+		{
+			title:
+				'FaceTory Moon Velvet Moisturizing Cream with Jojoba Oil Sheet Mask',
 			price: 12.0,
-			description:
-				`JOJOBA SEED OIL to balance and control sebum production, calm acne, and soothe dry skin. Jojoba seed oil is known to be a great balancing ingredient for all skin types, even oily skin. It balances the skin's natural oils to ensure softness and clarity. With the great balancing properies of jojoba oil, skin feels more comfortable and soothed and not overly oily or over-moisturized`,
+			description: `JOJOBA SEED OIL to balance and control sebum production, calm acne, and soothe dry skin. Jojoba seed oil is known to be a great balancing ingredient for all skin types, even oily skin. It balances the skin's natural oils to ensure softness and clarity. With the great balancing properies of jojoba oil, skin feels more comfortable and soothed and not overly oily or over-moisturized`,
 			quantity: 20,
 			category: 'Mask',
 			imageUrl: '/productImages/MoonVelvet.png',
 		},
-    {
+		{
 			title: 'Glow Baby Glow 2-Step Radiance Boosting Sheet Mask ',
 			price: 14.0,
-			description:
-      `ALOE BARBADENSIS EXTRACT to fight inflammation, acne, fine lines, and boost collagen production. Aloe is a soothing ingredient that helps alleviate redness and skin irritation. It's a great ingredient to use after being out in the sun!`,
+			description: `ALOE BARBADENSIS EXTRACT to fight inflammation, acne, fine lines, and boost collagen production. Aloe is a soothing ingredient that helps alleviate redness and skin irritation. It's a great ingredient to use after being out in the sun!`,
 			quantity: 20,
 			category: 'Mask',
 			imageUrl: '/productImages/GlowBabyGlow.png',
@@ -251,18 +243,18 @@ async function seed() {
 	//Creating LineItems
 	function lineItemsDB() {
 		let lineItems = [];
-		for (let i = 0; i < 6; i++) {
+		for (let i = 0; i < 10; i++) {
 			lineItems.push({
 				quantity: Math.ceil(3 * Math.random()),
 				productId: i + 1,
 				orderId: Math.ceil(3 * Math.random()),
 			});
 		}
-		for (let i = 0; i < 15; i++) {
+		for (let i = 0; i < 18; i++) {
 			lineItems.push({
 				quantity: Math.ceil(3 * Math.random()),
-				productId: Math.ceil(7 * Math.random()),
-				orderId: Math.ceil(5 * Math.random()) + 3,
+				productId: i + 1,
+				orderId: Math.ceil(10 * Math.random()) + 3,
 			});
 		}
 		return lineItems;
