@@ -10,7 +10,7 @@ body {
 }
 
 .app-body {
-  padding-top:3%
+  padding-top:4em
 }
 
 a {
@@ -20,32 +20,6 @@ a {
 
 label {
   display: block;
-}
-
-.nav-parent {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 0.5%;
-  background: #DAE3E6;
-  position: fixed;
-  z-index: 2;
-  width:100%;
-  opacity:95%
-}
-
-nav a {
-  display: inline-block;
-  margin: 1em;
-  font-size: 15px;
-}
-
-nav a:hover {
-  font-weight:bold;
-  text-decoration: none;
-}
-
-.nav-brand {
-  padding-top: 0.5%
 }
 
 
@@ -80,6 +54,8 @@ img {
 .product-info {
   padding: 20px;
 }
+
+/* Landingpage/Homepage */
 
 .carousel-item {
   transition: opacity 2s ease-in-out !important;
@@ -124,5 +100,46 @@ img {
   background-image: linear-gradient( #DFDACD,#FAF9F6 );
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* Navbar */
+
+.nav-parent {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5%;
+  background: #DAE3E6;
+  position: fixed;
+  z-index: 2;
+  width:100%;
+  opacity:95%
+}
+
+nav a {
+  display: inline-block;
+  margin: 1em;
+  font-size: 15px;
+}
+
+nav a:hover {
+  font-weight:bold;
+  text-decoration: none;
+}
+
+.nav-brand {
+  padding-top: 0.5%
+}
+
+/* Admin All Orders  */
+
+#admin-orders {
+  padding-top:25px
+}
+
+.all-orders-table, .admin-orders-filter {
+  padding:2%;
+  width: 50% !important;
+  margin-left:auto;
+  margin-right:auto
 }
 
