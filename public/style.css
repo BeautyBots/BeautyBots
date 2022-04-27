@@ -143,3 +143,21 @@ nav a:hover {
   margin-right:auto
 }
 
+/* Review form */
+.add-review-form{
+  display:flex;
+  flex-direction: column;
+  padding: 2% 30%;
+  margin-left:auto;
+  margin-right:auto
+}
+
+.review-form-product {
+  width:500px
+}
+
+.review-btn {
+  width: 9rem;
+  margin-left:auto;
+  margin-right:auto
+}
