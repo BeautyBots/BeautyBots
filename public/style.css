@@ -1,28 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* change the colors */
+
 
 body {
   font-family: sans-serif;
+  color: #6E6D6E !important;
+}
+
+.app-body {
+  padding-top:4em
 }
 
 a {
   text-decoration: none;
+  color: #6E6D6E !important
 }
 
 label {
   display: block;
 }
 
-.nav-parent {
-  display: flex;
-  justify-content: space-between;
-}
-
-nav a {
-  display: inline-block;
-  margin: 1em;
-}
 
 form div {
   margin: 1em;
@@ -57,10 +56,117 @@ img {
   padding: 20px;
 }
 
+/* Landingpage/Homepage */
+
 .carousel-item {
   transition: opacity 2s ease-in-out !important;
 }
 
+
+.carousel-item img {
+  height: 650px !important;
+}
+
+.home-card {
+  padding: 2rem;
+  width: 70%;
+  background-color: #FAF9F6 !important;
+  opacity: 90%;
+}
+
+.home-card:hover {
+  opacity:100%;
+  background-color: rgba(255, 255, 255, 0.918) !important
+}
+.home-col {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-row {
+  padding: 0 10%
+}
+
+.featured-heading {
+  text-align:center;
+  padding: 2%
+}
+
+.all-product-button {
+  padding: 4% 4% 2% 4%;
+}
+
+.homepage {
+  padding-bottom: 3%;
+  background-image: linear-gradient( #DFDACD,#FAF9F6 );
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Navbar */
+
+.nav-parent {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5%;
+  background: #DAE3E6;
+  position: fixed;
+  z-index: 2;
+  width:100%;
+  opacity:95%
+}
+
+nav a {
+  display: inline-block;
+  margin: 1em;
+  font-size: 15px;
+}
+
+nav a:hover {
+  font-weight:bold;
+  text-decoration: none;
+}
+
+.nav-brand {
+  padding-top: 0.5%
+}
+
+/* Admin All Orders  */
+
+#admin-orders {
+  padding:25px 0
+}
+
+.all-orders-table, .admin-orders-filter {
+  padding:2%;
+  width: 50% !important;
+  margin-left:auto;
+  margin-right:auto
+}
+
+.admin-orders-filter label {
+  padding:2%
+}
+
+/* Review form */
+.add-review-form{
+  display:flex;
+  flex-direction: column;
+  padding: 2% 30%;
+  margin-left:auto;
+  margin-right:auto
+}
+
+.review-form-product {
+  width:500px
+}
+
+.review-btn {
+  width: 9rem;
+  margin-left:auto;
+  margin-right:auto
+=======
 /* Edit and add product forms*/
 .product-forms {
   display:flex;

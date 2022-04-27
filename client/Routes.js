@@ -7,6 +7,7 @@ import { me } from './store';
 import { getCart } from './store/cart';
 import { getUsers } from './store/users';
 import { getAdminOrders } from './store/adminOrders';
+import { getProducts } from './store/products';
 
 import AllProducts from './components/AllProducts';
 import SingleProduct from './components/SingleProduct';
@@ -25,6 +26,7 @@ import StripePaymentForm from './components/StripePaymentForm';
 class Routes extends Component {
 	componentDidMount() {
 		this.props.loadInitialData();
+		this.props.loadProducts()
 		this.props.getUsers();
 		this.props.getCart();
 		this.props.getOrders();
@@ -39,7 +41,7 @@ class Routes extends Component {
 	render() {
 		const { isLoggedIn, isAdmin } = this.props;
 		return (
-			<div>
+			<div className="app-body">
 				{isLoggedIn ? (
 					<Switch>
 						<Redirect from="/login" to="/home" />
@@ -108,6 +110,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
 	return {
 		loadInitialData: () => dispatch(me()),
+		loadProducts: () => dispatch(getProducts()),
 		getCart: () => dispatch(getCart()),
 		getUsers: () => dispatch(getUsers()),
 		getOrders: () => dispatch(getAdminOrders()),

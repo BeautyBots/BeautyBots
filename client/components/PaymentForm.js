@@ -27,40 +27,42 @@ class PaymentForm extends React.Component {
     });
   }
 
-  handleCheckout() {
-    let cart = localStorage.getItem("cart");
-    if (cart) {
-      this.props.createOrder(cart);
-      //do we need to set localstorage cart to empty
-    } else {
-      cart = this.props.cart;
-      this.props.createOrder(cart);
-    }
-  }
 
-  async handleSubmit() {
-    const { elements, stripe } = this.props;
-    console.log("PROPS", this.props);
-    const cardElement = elements.getElement(CardElement);
+  handleCheckout(email) {
+		let cart = localStorage.getItem('cart');
+		if (cart) {
+			cart = JSON.parse(cart)
+			cart.email = email
+			this.props.createOrder(cart);
+			//do we need to set localstorage cart to empty
+		} else {
+			cart = this.props.cart;
+			this.props.createOrder(cart);
+		}
+	}
 
+	async handleSubmit() {
+		const { elements, stripe } = this.props;
+		const cardElement = elements.getElement(CardElement);
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: cardElement,
       billing_details: {
-        address: this.state.shippingAddress,
-        email: this.state.email,
-        name: this.state.firstName,
-      },
-    });
+        address:this.state.shippingAddress,
+        email:this.state.email,
+        name:this.state.firstName,
+      }
+		});
 
-    if (error) {
-      console.log("[error]", error);
-    } else {
-      console.log("[PaymentMethod]", paymentMethod);
-      this.setState({ paid: true });
-      this.handleCheckout();
-    }
-  }
+		if (error) {
+			console.log('[error]', error);
+		} else {
+			console.log('[PaymentMethod]', paymentMethod);
+			const email = paymentMethod.billing_details.email
+      this.setState({paid:true})
+			this.handleCheckout(email)
+		}
+	}
 
   render() {
     const paid = this.state.paid;
