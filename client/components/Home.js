@@ -12,7 +12,6 @@ export const Home = (props) => {
   const name = username[0].toUpperCase() + username.slice(1);
   const products = props.products.slice(0,3)
 
-  console.log("products:",products)
   return (
     <div className="homepage">
       <Carousel fade>
@@ -46,7 +45,9 @@ export const Home = (props) => {
       </Carousel>
 
       <div className="row justify-content-center all-product-button">
-      <Button variant="outline-secondary">ALL PRODUCTS</Button>
+        <Link to="/products" >
+          <button type="button" className="btn btn-outline-secondary">ALL PRODUCTS</button>
+        </Link>
       </div>
 
       <h3 className="featured-heading">FEATURED PRODUCTS</h3>

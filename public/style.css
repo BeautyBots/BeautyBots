@@ -29,7 +29,7 @@ label {
 nav a {
   display: inline-block;
   margin: 1em;
-  font-size: 20px;
+  font-size: 15px;
 }
 nav a:hover {
   font-weight:bold;
