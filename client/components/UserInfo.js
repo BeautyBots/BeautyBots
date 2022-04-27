@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteUser, updateUserType } from '../store/users';
+import { Button } from 'react-bootstrap';
 
 class UserInfo extends React.Component {
 	constructor(props) {
@@ -40,14 +41,20 @@ class UserInfo extends React.Component {
 							<option value="Admin">Admin</option>
 							<option value="User">User</option>
 						</select>
-						<button type="submit">save</button>
+						<Button size="sm" variant="outline-secondary" type="submit">
+							save
+						</Button>
 					</form>
 				</td>
 				<td>
 					<form>
-						<button type="submit" onClick={() => this.props.deleteUser({ id })}>
+						<Button
+							size="sm"
+							variant="outline-danger"
+							onClick={() => this.props.deleteUser({ id })}
+						>
 							Remove
-						</button>
+						</Button>
 					</form>
 				</td>
 			</tr>

@@ -68,14 +68,35 @@ img {
 }
 
 .add-product-form {
-  background-color: #FAF9F6;
+  background-color: white;
   display: flex;
   margin: 20px;
   flex-direction: column;
   width: 50%;
   padding: 10px;
-  box-shadow: 3px 3px #6E6D6E;
+  border: 7px solid #DFDACD;
+  font-weight: 400;
+}
 
+.add-product-form input[type="text"]
+{
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.add-product-form textarea[type="text"]
+{
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.add-product-form select
+{
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .add-product-form h1 {
@@ -112,15 +133,15 @@ img {
   height:55px;
 }
 
-.add-product-form button {
-  margin: 5px;
+.users-container {
+  background-color:#dae3e6;
+  display:flex;
+  justify-content: center;
 }
 
 #user-list {
   margin: 100px auto;
-  border: 1px solid #6E6D6E;
-  border-radius: 10px;
-  box-shadow: 2px 2px #6E6D6E;
+  border: 8px solid white;
   max-width: auto;
   overflow: hidden;
   width: 800px;
@@ -132,7 +153,7 @@ img {
   background-color: #698d9a;
   color: white;
   font-size: 1.5em;
-  padding: 1rem;
+  padding: 8px;
   text-align: center;
   text-transform: uppercase;
 }
@@ -147,6 +168,24 @@ img {
   text-align: center;
   vertical-align: middle;
 }
+
+#user-list th {
+  padding: 5px;
+}
+
+#user-list td {
+  font-style: italic;
+  font-size: 14px;
+}
+
+#user-list select {
+  font-style: italic;
+  color: #595959;
+  font-size: 14px;
+}
+
+
+
 
 #user-list td:last-child {
   font-size: 0.95em;

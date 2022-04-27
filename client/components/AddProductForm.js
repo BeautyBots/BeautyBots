@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addProduct } from '../store/products';
+import { Button } from 'react-bootstrap';
 
 class AddProductForm extends React.Component {
 	constructor(props) {
@@ -16,6 +17,7 @@ class AddProductForm extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
+
 	handleChange(event) {
 		this.setState({
 			[event.target.name]: event.target.value,
@@ -66,12 +68,22 @@ class AddProductForm extends React.Component {
 					<div className="elements">
 						<div className="short-element">
 							<label htmlFor="title">Product Name:</label>
-							<input name="title" onChange={this.handleChange} value={title} />
+							<input
+								type="text"
+								name="title"
+								onChange={this.handleChange}
+								value={title}
+							/>
 						</div>
 
 						<div className="short-element">
 							<label htmlFor="price">Price:</label>
-							<input name="price" onChange={this.handleChange} value={price} />
+							<input
+								type="text"
+								name="price"
+								onChange={this.handleChange}
+								value={price}
+							/>
 						</div>
 					</div>
 
@@ -79,6 +91,7 @@ class AddProductForm extends React.Component {
 						<div className="short-element">
 							<label htmlFor="quantity">Quantity:</label>
 							<input
+								type="text"
 								name="quantity"
 								onChange={this.handleChange}
 								value={quantity}
@@ -120,6 +133,7 @@ class AddProductForm extends React.Component {
 						<div className="long-element">
 							<label htmlFor="imageUrl">Image Url:</label>
 							<input
+								type="text"
 								name="imageUrl"
 								onChange={this.handleChange}
 								value={imageUrl}
@@ -127,7 +141,11 @@ class AddProductForm extends React.Component {
 						</div>
 					</div>
 
-					<button type="submit">Submit</button>
+					<div className="elements">
+						<Button variant="outline-secondary" size="sm" type="submit">
+							Submit
+						</Button>
+					</div>
 				</form>
 			</div>
 		);

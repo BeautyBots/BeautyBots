@@ -16,25 +16,27 @@ class UserList extends React.Component {
 		const { users, updateUserType } = this.props;
 
 		return (
-			<div id="user-list">
-				<div class="header">Users</div>
-				<table cellspacing="0">
-					<tbody>
-						<tr>
-							<th>Username</th>
-							<th>Email</th>
-							<th>Role</th>
-							<th>Remove User</th>
-						</tr>
-						{users.map((user) => (
-							<UserInfo
-								user={user}
-								key={user.id}
-								updateUserType={updateUserType}
-							/>
-						))}
-					</tbody>
-				</table>
+			<div className="users-container">
+				<div id="user-list">
+					<div className="header">Users</div>
+					<table>
+						<tbody>
+							<tr>
+								<th>Username</th>
+								<th>Email</th>
+								<th>Role</th>
+								<th>Remove User</th>
+							</tr>
+							{users.map((user) => (
+								<UserInfo
+									user={user}
+									key={user.id}
+									updateUserType={updateUserType}
+								/>
+							))}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		);
 	}
