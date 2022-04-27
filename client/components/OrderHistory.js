@@ -1,24 +1,32 @@
+<<<<<<< HEAD
 import React from 'react';
 import { connect } from 'react-redux';
 import { getOrderHistory } from '../store/orderHistory';
 import { getCart } from '../store/cart';
 import { Accordion } from 'react-bootstrap';
 import SingleOrder from './SingleOrder';
+=======
+import React from "react";
+import { connect } from "react-redux";
+import { getOrderHistory } from "../store/orderHistory";
+import { getCart } from "../store/cart";
+import Accordion from "react-bootstrap/Accordion";
+>>>>>>> 55fc3cbaf25801982306bff95c884aed59be4f1f
 
 class OrderHistory extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+  constructor(props) {
+    super(props);
+  }
 
-	componentDidMount() {
-		this.props.getOrderHistory();
-	}
+  componentDidMount() {
+    this.props.getOrderHistory();
+  }
 
-	componentDidUpdate(prevProps) {
-		if (prevProps.orderHistory.length !== this.props.orderHistory.length) {
-			this.props.getOrderHistory();
-		}
-	}
+  componentDidUpdate(prevProps) {
+    if (prevProps.orderHistory.length !== this.props.orderHistory.length) {
+      this.props.getOrderHistory();
+    }
+  }
 
 	render() {
 		const orderHistory = this.props.orderHistory;
@@ -91,15 +99,15 @@ class OrderHistory extends React.Component {
 }
 
 const mapState = (state) => {
-	return {
-		orderHistory: state.orderHistory,
-	};
+  return {
+    orderHistory: state.orderHistory,
+  };
 };
 
 const mapDispatch = (dispatch) => {
-	return {
-		getOrderHistory: () => dispatch(getOrderHistory()),
-	};
+  return {
+    getOrderHistory: () => dispatch(getOrderHistory()),
+  };
 };
 
 export default connect(mapState, mapDispatch)(OrderHistory);

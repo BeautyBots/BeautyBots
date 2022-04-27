@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getFilteredProducts, getProducts } from "../store/products";
 import { addToCart } from "../store/cart";
-import { Row, Col, Card } from "react-bootstrap";
+import { Row, Col, Card, Container, Button } from "react-bootstrap";
 
 class AllProducts extends React.Component {
   constructor(props) {
@@ -41,8 +41,8 @@ class AllProducts extends React.Component {
           </Link>
         )}
         <div className="product-filter">
-          <h2>All Products</h2>
-          <label className="filter">Filter: </label>
+          <h2 className="allprods-heading">Products</h2>
+          <label className="allprods-filter">Filter: </label>
           <select onChange={this.handleSelect}>
             <option value="all-products">All Products</option>
             {categories.map((category, idx) => (
@@ -52,26 +52,39 @@ class AllProducts extends React.Component {
             ))}
           </select>
         </div>
-        <Row xs={1} md={3} className="g-4">
-          {products.map((product) => (
-            <Col key={product.id} className="col-sm-4 py-2">
-              <Card className="card h-100">
-                <Link to={`/products/${product.id}`}>
-                  <Card.Img variant="top" src={product.imageUrl} />
-                </Link>
-                <Card.Body>
+        <Container>
+          <Row xs={1} md={3} className="g-4">
+            {products.map((product) => (
+              <Col key={product.id} className="col-sm-4 py-2 card-col ">
+                <Card className="card h-100" style={{ width: "18rem" }}>
                   <Link to={`/products/${product.id}`}>
-                    <Card.Title>{product.title}</Card.Title>
-                    <Card.Text>${product.price}</Card.Text>
+                    <Card.Img variant="top" src={product.imageUrl} />
                   </Link>
-                  <button onClick={() => this.props.addToCart(product)}>
-                    Add to Cart
-                  </button>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+                  <Card.Body>
+                    <Link to={`/products/${product.id}`}>
+                      <Card.Title
+                        bsPrefix="card-title-prods"
+                        // style={{ fontSize: "17px" }}
+                      >
+                        {product.title}
+                      </Card.Title>
+                      <Card.Text bsPrefix="card-text-prods">
+                        ${product.price}
+                      </Card.Text>
+                    </Link>
+                    <Button
+                      className="allprods-button"
+                      variant="outline-secondary"
+                      onClick={() => this.props.addToCart(product)}
+                    >
+                      Add to Cart
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Container>
 
         {/* <div id="products">
           {products.map((product) => (
