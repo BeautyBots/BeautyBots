@@ -27,22 +27,21 @@ class PaymentForm extends React.Component {
 		});
 	}
 
-  handleCheckout() {
+  handleCheckout(email) {
 		let cart = localStorage.getItem('cart');
 		if (cart) {
+			cart = JSON.parse(cart)
+			cart.email = email
 			this.props.createOrder(cart);
 			//do we need to set localstorage cart to empty
 		} else {
 			cart = this.props.cart;
 			this.props.createOrder(cart);
-
-		  console.log("AFTER CHECKOUT", this.props.cart)
 		}
 	}
 
 	async handleSubmit() {
 		const { elements, stripe } = this.props;
-    console.log("PROPS",this.props)
 		const cardElement = elements.getElement(CardElement);
 
 		const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -59,8 +58,9 @@ class PaymentForm extends React.Component {
 			console.log('[error]', error);
 		} else {
 			console.log('[PaymentMethod]', paymentMethod);
+			const email = paymentMethod.billing_details.email
       this.setState({paid:true})
-			this.handleCheckout()
+			this.handleCheckout(email)
 		}
 	}
 
