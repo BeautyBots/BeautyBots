@@ -238,6 +238,11 @@ img {
   font-weight: 300;
 }
 
+.order-history .order-info:hover {
+  transition: 0.5s;
+  background-color: #DFDACD;
+  opacity: 0.6;
+}
 .order-history .products {
   display:flex;
   flex-direction: column;
@@ -247,7 +252,8 @@ img {
   display:flex;
   flex-direction: row;
   margin: 10px;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 15px;
   align-items: center;
 }
 .order-history .products .product img{
