@@ -7,9 +7,6 @@
 body {
   font-family: sans-serif;
   color: #6E6D6E !important;
-  background-image: linear-gradient(#FAF9F6 , #DFDACD);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .app-body {
@@ -123,6 +120,9 @@ img {
 }
 
 .homepage {
-  padding-bottom: 3%
+  padding-bottom: 3%;
+  background-image: linear-gradient( #DFDACD,#FAF9F6 );
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
