@@ -44,9 +44,11 @@ class UserInfo extends React.Component {
 					</form>
 				</td>
 				<td>
-					<button type="submit" onClick={() => this.props.deleteUser({ id })}>
-						X
-					</button>
+					<form>
+						<button type="submit" onClick={() => this.props.deleteUser({ id })}>
+							Remove
+						</button>
+					</form>
 				</td>
 			</tr>
 		);
