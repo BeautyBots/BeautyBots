@@ -34,10 +34,11 @@
 body {
   font-family: sans-serif;
   color: #6E6D6E !important;
+  font-family: "glacial_indifferenceregular" !important
 }
 
 .app-body {
-  padding-top:4em
+  padding-top:3em
 }
 
 a {
@@ -68,6 +69,7 @@ img {
   padding: 10px;
   justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top:6rem
 
 }
 
@@ -99,7 +101,9 @@ img {
   display: flex;
 
 }
-
+.product-img {
+  padding: 2rem
+}
 .padding20 {
   padding: 20px 0px;
 }
@@ -128,7 +132,10 @@ img {
 
 /* Landingpage/Homepage */
 
-
+.btn-edit-product {
+  font-size: 1.25rem !important;
+  margin-left:1rem
+}
 .carousel-item {
   transition: opacity 2s ease-in-out !important;
 }
@@ -136,7 +143,7 @@ img {
 
 .polaroid {
   background: #fff;
-  padding: 1rem;
+  padding: 7rem 1rem 4rem 1rem;
   box-shadow: 0 0.2rem 1.2rem rgba(0,0,0,0.2);
 
 }
@@ -207,18 +214,23 @@ nav a {
 }
 
 nav a:hover {
-  font-weight:bold;
+  font-family: "glacial_indifferenceitalic";
   text-decoration: none;
 }
 
 .nav-brand {
-  padding-top: 0.5%
+  margin-top: 20px;
+  margin-left: 1rem;
+}
+
+.nav-link {
+  padding: 1.5rem 1rem 0 0 !important
 }
 
 /* Admin All Orders  */
 
 #admin-orders {
-  padding:25px 0
+  padding:5rem 0
 }
 
 .all-orders-table, .admin-orders-filter {
@@ -236,7 +248,7 @@ nav a:hover {
 .add-review-form{
   display:flex;
   flex-direction: column;
-  padding: 2% 30%;
+  padding: 10% 30%;
   margin-left:auto;
   margin-right:auto
 }
@@ -249,13 +261,14 @@ nav a:hover {
   width: 9rem;
   margin-left:auto;
   margin-right:auto
+}
 
 /* Edit and add product forms*/
 .product-forms {
   display:flex;
   justify-content: center;
   align-items: center;
-  background-color: #DAE3E6
+  padding-top:7rem
 }
 
 .add-product-form {
@@ -326,7 +339,7 @@ nav a:hover {
 
 /*user lists (admin)*/
 .users-container {
-  background-color:#dae3e6;
+  padding-top:5rem;
   display:flex;
   justify-content: center;
 }
@@ -520,8 +533,9 @@ nav a:hover {
 
 .allprods-heading{
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 70px;
+  padding-top: 70px;
+  padding-bottom: 50px;
+  font-size:2.5rem
 }
 
 /* cart */
@@ -533,8 +547,9 @@ nav a:hover {
   color: black;
 }
 .empty-cart{
-text-align: center;
-margin-bottom: 7rem;
+  padding-top:6rem;
+  text-align: center;
+  margin-bottom: 7rem;
 }
 .empty-cart > h1{
   margin-top: 3rem;
@@ -585,7 +600,7 @@ margin-bottom: 7rem;
 }
 .checkout-form > h2{
   text-align: center;
-  padding-top:3rem;
+  padding-top:6rem;
 }
 
 .payment-page{
@@ -617,6 +632,7 @@ margin-bottom: 7rem;
 .confirmation{
   text-align: center;
   background-color: #FAF9F6 ;
+  padding: 6rem 0 20rem 0
 }
 .confirmation > h1{
   padding-top: 4rem;

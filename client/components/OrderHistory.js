@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 import React from 'react';
 import { connect } from 'react-redux';
 import { getOrderHistory } from '../store/orderHistory';
 import { getCart } from '../store/cart';
 import { Accordion } from 'react-bootstrap';
 import SingleOrder from './SingleOrder';
-=======
-import React from "react";
-import { connect } from "react-redux";
-import { getOrderHistory } from "../store/orderHistory";
-import { getCart } from "../store/cart";
-import Accordion from "react-bootstrap/Accordion";
->>>>>>> 55fc3cbaf25801982306bff95c884aed59be4f1f
 
 class OrderHistory extends React.Component {
   constructor(props) {
