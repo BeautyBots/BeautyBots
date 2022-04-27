@@ -7,7 +7,13 @@
 body {
   font-family: sans-serif;
   color: #6E6D6E !important;
-  background-image: linear-gradient(#FAF9F6 , #DFDACD)
+  background-image: linear-gradient(#FAF9F6 , #DFDACD);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.app-body {
+  padding-top:3%
 }
 
 a {
@@ -22,8 +28,13 @@ label {
 .nav-parent {
   display: flex;
   justify-content: space-between;
-  padding: 0.5%;
+  padding: 0 0.5%;
   background: #DAE3E6;
+  position: fixed;
+  border-radius: 0 0 1em 1em;
+  z-index: 2;
+  width:100%;
+  opacity:95%
 }
 
 nav a {
@@ -112,5 +123,5 @@ img {
 }
 
 .nav-brand {
-  padding-top: 0.5rem
+  padding-top: 0.5%
 }
