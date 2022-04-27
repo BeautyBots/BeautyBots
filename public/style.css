@@ -1,13 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* change the colors */
+
 
 body {
   font-family: sans-serif;
+  color: #6E6D6E !important;
+  background-image: linear-gradient(#FAF9F6 , #DFDACD)
 }
 
 a {
   text-decoration: none;
+  color: #6E6D6E !important
 }
 
 label {
@@ -17,11 +22,18 @@ label {
 .nav-parent {
   display: flex;
   justify-content: space-between;
+  padding: 1%;
+  background: #DAE3E6;
 }
 
 nav a {
   display: inline-block;
   margin: 1em;
+  font-size: 20px;
+}
+nav a:hover {
+  font-weight:bold;
+  text-decoration: none;
 }
 
 form div {
@@ -60,3 +72,44 @@ img {
   transition: opacity 2s ease-in-out !important;
 }
 
+.carousel-item img {
+  height: 700px !important
+}
+
+.home-card {
+  padding: 2rem;
+  width: 25rem;
+  background-color: #FAF9F6 !important;
+  opacity: 75%
+}
+
+.home-card:hover {
+  opacity:100%;
+  font-weight: bold;
+}
+.home-col {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-row {
+  padding: 0 10%
+}
+
+.featured-heading {
+  text-align:center;
+  padding: 2%
+}
+
+.all-product-button {
+  padding: 4% 4% 2% 4%;
+}
+
+.homepage {
+  padding-bottom: 3%
+}
+
+.nav-brand {
+  padding-top: 0.5rem
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Carousel } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Carousel, Button, Row, Col, Card } from "react-bootstrap";
 
 //COMPONENT
 export const Home = (props) => {
@@ -9,9 +10,11 @@ export const Home = (props) => {
     username = "Guest"
   }
   const name = username[0].toUpperCase() + username.slice(1);
+  const products = props.products.slice(0,3)
 
+  console.log("products:",products)
   return (
-    <div>
+    <div className="homepage">
       <Carousel fade>
         <Carousel.Item interval={5000}>
           <img
@@ -41,6 +44,30 @@ export const Home = (props) => {
           />
         </Carousel.Item>
       </Carousel>
+
+      <div className="row justify-content-center all-product-button">
+      <Button variant="outline-secondary">ALL PRODUCTS</Button>
+      </div>
+
+      <h3 className="featured-heading">FEATURED PRODUCTS</h3>
+      <Row xs={1} md={3} className="g-4 home-row">
+          {products.map((product) => (
+            <Col key={product.id} className="col-sm-4 py-2 home-col">
+              <Card className="card h-100 home-card">
+                <Link to={`/products/${product.id}`}>
+                  <Card.Img variant="top" src={product.imageUrl} />
+                </Link>
+                <Card.Body className = "text-center">
+                  <Link to={`/products/${product.id}`}>
+                    <Card.Title>{product.title}</Card.Title>
+                    <Card.Text>${product.price}</Card.Text>
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+
     </div>
   );
 };
@@ -49,6 +76,7 @@ export const Home = (props) => {
 const mapState = (state) => {
   return {
     username: state.auth.username,
+    products: state.products
   };
 };
 

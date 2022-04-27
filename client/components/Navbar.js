@@ -6,10 +6,10 @@ import { _emptyCart } from '../store/cart';
 
 const Navbar = ({ handleClick, isLoggedIn, isAdmin }) => (
 	<div className="nav-parent">
-		<h1>BeautyBots</h1>
+		<h1 className = "nav-brand">BeautyBots</h1>
 		<nav>
 			{isLoggedIn ? (
-				<div>
+				<div className="nav-link">
 					<Link to="/home">Home</Link>
 					<a href="#" onClick={handleClick}>
 						Logout
