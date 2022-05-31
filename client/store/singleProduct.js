@@ -38,7 +38,6 @@ export const updateProduct = (product) => {
 				`/api/products/${product.id}`,
 				product
 			);
-			console.log('IN REDUCER:', updated);
 			dispatch(_updateProduct(updated));
 		} catch (error) {
 			console.error('Unable to update product:', error);

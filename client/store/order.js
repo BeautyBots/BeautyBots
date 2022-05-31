@@ -26,7 +26,6 @@ export const createOrder = (cart) => {
         cart.status = "Pending";
         const res = await axios.post("/api/cart/createOrderGuest", cart);
         let order = res.data;
-        console.log("ORDER:",order)
         dispatch(_createOrder(order));
         window.localStorage.setItem("cart",JSON.stringify({"lineItems":[]}))
         const emptyCart = JSON.parse(window.localStorage.getItem("cart"))

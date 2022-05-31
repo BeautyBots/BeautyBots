@@ -35,7 +35,6 @@ cartRouter.post('/createOrder', async (req, res, next) => {
 	try {
 		const user = await User.findByToken(req.headers.authorization);
 		const emptyCart = await user.createOrder();
-		console.log("empty cart:", emptyCart)
 		res.send(emptyCart)
 	} catch (error) {
 		next(error);

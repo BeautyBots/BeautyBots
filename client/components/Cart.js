@@ -16,7 +16,6 @@ class Cart extends React.Component {
 
   render() {
     const lineItems = this.props.cart.lineItems || [];
-    console.log("CART", this.props.cart)
     if (lineItems.length === 0) {
       return (
         <div className="empty-cart">

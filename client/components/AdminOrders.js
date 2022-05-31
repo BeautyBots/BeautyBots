@@ -100,7 +100,6 @@ class AdminOrders extends React.Component {
 }
 
 const mapState = (state) => {
-  console.log("stateeee", state);
   return {
     orders: state.adminOrders,
   };
