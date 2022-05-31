@@ -28,10 +28,6 @@ class AddProductForm extends React.Component {
 		//change this to use a reduce method for a more elegant solution
 		event.preventDefault();
 		let passToDispatch = {};
-		// const passToDispatch = Object.keys(this.state).reduce((obj, key) => ({
-		// 	...obj,
-		// 	...(this.state[key] && { key: this.state[key] }),
-		// }));
 		for (let key in this.state) {
 			if (this.state[key] !== '') {
 				passToDispatch[key] = this.state[key];

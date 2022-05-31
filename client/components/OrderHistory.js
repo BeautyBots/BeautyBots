@@ -44,29 +44,6 @@ class OrderHistory extends React.Component {
 			);
 		} else {
 			return (
-				// <Accordion flush>
-				// 	{orderHistory.map((order, idx) => {
-				// 		return (
-				// 			<Accordion.Item key={order.id} eventKey={idx}>
-				// 				<Accordion.Header>
-				// 					<div>
-				// 						<span>{`Order Id: ${order.id}`}</span>
-				// 						<span>{`Status: ${order.status}`}</span>
-				// 					</div>
-				// 				</Accordion.Header>
-				// 				<Accordion.Body>
-				// 					{order.lineItems.map((item) => (
-				// 						<div>
-				// 							<img src={item.product.imageUrl} />
-				// 							<p>{item.product.title}</p>
-				// 							<p>{item.quantity}</p>
-				// 						</div>
-				// 					))}
-				// 				</Accordion.Body>
-				// 			</Accordion.Item>
-				// 		);
-				// 	})}
-				// </Accordion>
 
 				<div className="order-history">
 					<div className="title">Your Order History</div>

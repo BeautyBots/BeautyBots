@@ -108,7 +108,6 @@ User.prototype.removeProduct = async function (product) {
 User.prototype.createOrder = async function () {
 	const cart = await this.getCart();
 	cart.status = 'Pending';
-	console.log('in instance Method', cart);
 	await cart.save();
 	return this.getCart();
 };
