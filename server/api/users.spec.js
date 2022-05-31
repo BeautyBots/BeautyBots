@@ -20,6 +20,10 @@ describe('User routes', () => {
 
       expect(res.body).to.be.an('array');
       expect(res.body.length).to.equal(2);
+      expect()
     })
+
   }) // end describe('/api/users')
 }) // end describe('User routes')
+
+
