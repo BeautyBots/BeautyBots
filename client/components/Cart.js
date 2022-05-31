@@ -8,6 +8,7 @@ import {
   removeProduct,
 } from "../store/cart";
 import { Button, Card, Row, Col } from "react-bootstrap";
+
 class Cart extends React.Component {
   constructor() {
     super();
@@ -15,6 +16,7 @@ class Cart extends React.Component {
 
   render() {
     const lineItems = this.props.cart.lineItems || [];
+    console.log("CART", this.props.cart)
     if (lineItems.length === 0) {
       return (
         <div className="empty-cart">
@@ -75,7 +77,7 @@ class Cart extends React.Component {
                         </Button>
                       </div>
                       <Card.Text bsPrefix="card-text-cart">
-                        ${item.product.price}
+                        ${item.product.price * item.quantity}.00
                       </Card.Text>
                     </Card.Body>
                   </Col>
@@ -83,6 +85,9 @@ class Cart extends React.Component {
               </Card>
             </div>
           ))}
+          <div>
+            <span>TOTAL: ${this.props.cart.total}.00 </span>
+          </div>
           <Link to="/checkout">
             <Button className="checkout-btn" variant="outline-secondary">
               <div className="checkout">Checkout</div>
